@@ -1,0 +1,10 @@
+{
+	"parent":"item/generated",
+	"textures":{
+		"layer0":"projt2:items/focus_basic",
+		"layer1":"projt2:items/focus_air",
+		"layer2":"projt2:items/focus_earth",
+		"layer3":"projt2:items/focus_water",
+		"layer4":"projt2:items/focus_fire"
+	}
+}

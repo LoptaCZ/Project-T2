@@ -1,0 +1,168 @@
+#	Subtitles?
+#	Who even uses this? Er Whatever
+projt2.subtitle.attach=Attached something
+projt2.subtitle.beam=x
+projt2.subtitle.bubbling=Cauldron Bubbling
+projt2.subtitle.creaking=x
+projt2.subtitle.elecloop=x
+projt2.subtitle.fireloop=x
+projt2.subtitle.gore=x
+projt2.subtitle.heal=x
+projt2.subtitle.infuser=Infuser Infusing
+projt2.subtitle.infuserdark=Dark Infuser Infusing
+projt2.subtitle.monolith=x
+projt2.subtitle.monolithfound=x
+projt2.subtitle.page=Browsing Pages
+projt2.subtitle.pclose=Portal Close
+projt2.subtitle.popen=Portal Open
+projt2.subtitle.recover=x
+projt2.subtitle.roots=x
+projt2.subtitle.rumble=x
+projt2.subtitle.rune_set=Rune Set
+projt2.subtitle.scribble=Researcher Scribbling
+projt2.subtitle.shock=x
+projt2.subtitle.singularity=x
+projt2.subtitle.stomp=x
+projt2.subtitle.stoneclose=x
+projt2.subtitle.stoneopen=x
+projt2.subtitle.suck=x
+projt2.subtitle.swing=Sword Swing
+projt2.subtitle.tinkering=Tinkering Tools Tinkers
+projt2.subtitle.tool=x
+projt2.subtitle.upgrade=Upgraded Machine
+projt2.subtitle.whisper=x
+projt2.subtitle.wind=x
+projt2.subtitle.zap=x
+#	ItemGroup
+itemGroup.projt2=§5§lProject T2
+#	Crystals
+item.crystal.water.name=Aqeuous Crystal
+item.crystal.vis.name=Vis Crystal
+item.crystal.empty.name=Depleted Crystal
+item.crystal.taint.name=Tainted Crystal
+item.crystal.earth.name=Earthen Crystal
+item.crystal.fire.name=Fiery Crystal
+item.crystal.air.name=Vaporous Crystal
+#	Focuses
+item.focus.basic.name=Arcane Focus
+item.focus.air.name=Arcane Focus: Air
+item.focus.water.name=Arcane Focus: Water
+item.focus.earth.name=Arcane Focus: Earth
+item.focus.fire.name=Arcane Focus: Fire
+#	Potions
+item.extracts_pure.name=Extract of Purist Magic
+item.extracts_taint.name=Extract of Foulest Taint
+item.extracts_fire.name=Extract of Warmest Fire
+item.extracts_earth.name=Extract of Deepest Earth
+item.extracts_air.name=Extract of Lightest Air
+item.extracts_water.name=Extract of Coolest Water
+#	Unsorted Blocks
+tile.blockquaesitum.name=Quaesitum
+tile.blockHidden.name=§k§l§otile.blockhidden.name
+#	Raw Materials
+item.component_quicksilver.name=Quicksilver
+item.component_cinderpearl_pod.name=Cinderpearl Pod
+item.component_zombie_brain.name=Zombie Brain
+item.component_silverwood.name=Enchanted Silverwood
+item.component_wood.name=Enchanted Wood
+item.component_fabric.name=Enchanted Fabric
+item.component_thaumium_ingot.name=Thaumium Ingot
+item.component_animated_piston.name=Animated Piston
+item.component_darkness_drop.name=Drop of Darkness
+item.component_alumentum.name=Alumentum
+item.component_nitor.name=Nitor
+item.component_void_ingot.name=Void Ingot
+
+#	Artifacts
+#		Lost Knowledge
+item.artifact_AncientPottery.name=Ancient Pottery
+item.artifact_TarnishedChalice.name=Tarnished Chalice
+item.artifact_WornStatuette.name=Worn Statuette
+item.artifact_AncientWeapon.name=Ancient Weapon
+item.artifact_AncientSeal.name=Ancient Seal
+item.artifact_AncientStoneTablet.name=Ancient Stone Tablet
+#		Forbidden Konwledge
+item.artifact_DisortedSkull.name=Disorted Skull
+item.artifact_CrackedWispShell.name=Cracked Wisp Shell
+item.artifact_InhumanSkull.name=Inhuman Skull
+item.artifact_DarkenedCrystalEye.name=Darkened Crystal Eye
+item.artifact_KnottedSpite.name=Knotted Spite
+item.artifact_TomeOfForbidden.name=Tome of Forbbiden Knowledge
+#		Tainted Knowledge
+item.artifact_TaintSpores.name=Taint Spores
+item.artifact_TaintedOrgan.name=Tainted Organ
+item.artifact_TaintedFruit.name=Tainted Fruit
+item.artifact_TaintedBranch.name=Tainted Branch
+item.artifact_IntactTaintsporePod.name=Intact Taintspore Pod
+item.artifact_TaintTendrils.name=Writhing Taint Tendrils
+#		Eldritch Knowledge
+item.artifact_StrangeShard.name=Shard of Strange Metal
+item.artifact_EldritchMechanism.name=Eldritch Mechanism
+item.artifact_OpalescentEye.name=Opalescent Eye
+item.artifact_DisturbingMirror.name=Disturbing Mirror
+item.artifact_EldritchDevice.name=Glowing Eldritch Device
+item.artifact_EldritchRepository.name=Eldritch Repository
+
+#	Artifacts Lores
+#			aka Tooltips 
+#		Lost Knowledge
+item.itemartifact_ancient_pottery.tooltip=Common Ancient Artifact
+item.itemartifact_tarnished_chalice.tooltip=Common Ancient Artifact
+item.itemartifact_worn_statuette.tooltip=Uncommon Ancient Artifact
+item.itemartifact_ancient_weapon.tooltip=Uncommon Ancient Artifact
+item.itemartifact_ancient_seal.tooltip=Rare Ancient Artifact
+item.itemartifact_ancient_stone_tablet.tooltip=Exceptional Ancient Artifact
+#		Forbidden Knowledge
+item.itemartifact_disorted_skull.tooltip=Common Forbidden Artifact
+item.itemartifact_cracked_wisp_shell.tooltip=Common Forbidden Artifact
+item.itemartifact_inhuman_skull.tooltip=Uncommon Forbidden Artifact
+item.itemartifact_darkened_crystal_eye.tooltip=Uncommon Forbidden Artifact
+item.itemartifact_knotted_spite.tooltip=Rare Forbidden Artifact
+item.itemartifact_tome_forbidden.tooltip=Exceptional Forbidden Artifact
+#		Tainted Knowledge
+item.itemartifact_taint_spores.tooltip=Common Tainted Artifact
+item.itemartifact_tainted_organ.tooltip=Common Tainted Artifact
+item.itemartifact_tainted_fruit.tooltip=Uncommon Tainted Artifact
+item.itemartifact_tainted_branch.tooltip=Uncommon Tainted Artifact
+item.itemartifact_taintspore_pod.tooltip=Rare Tainted Artifact
+item.itemartifact_taint_tendrils.tooltip=Exceptional Tainted Artifact
+#		Eldritch Knowledge
+item.itemartifact_strange_metal.tooltip=Common Eldritch Artifact
+item.itemartifact_eldritch_mechanism.tooltip=Common Eldritch Artifact
+item.itemartifact_opalescent_eye.tooltip=Uncommon Eldritch Artifact
+item.itemartifact_disturbing_mirror.tooltip=Uncommon Eldritch Artifact
+item.itemartifact_eldritch_device.tooltip=Rare Eldritch Artifact
+item.itemartifact_eldritch_repository.tooltip=Exceptional Eldritch Artifact
+
+item.speedupgrade.name=Speed Upgrade
+#	Research things
+#		Lost Knowledge
+item.theory_lost.name=Lost Knowledge Theory
+item.discovery_lost.name=Lost Knowledge Discovery
+item.knowledge_lost.name=Lost Knowledge Fragments
+#		Forbidden Knowledge
+item.theory_forbidden.name=Forbidden Knowledge Theory
+item.discovery_forbidden.name=Forbidden Knowledge Discovery
+item.knowledge_forbidden.name=Forbidden Knowledge Fragments
+#		Tainted Knowledge
+item.theory_taint.name=Tainted Knowledge Theory
+item.discovery_taint.name=Tainted Knowledge Discovery
+item.knowledge_taint.name=Tainted Knowledge Fragments
+#		Eldritch Knowledge
+item.theory_eldritch.name=Eldritch Knowledge Theory
+item.discovery_eldritch.name=Eldritch Knowledge Discovery
+item.knowledge_eldritch.name=Eldritch Knowledge Fragments
+#	Potions
+item.potion_vis.name=Concentrated Vis
+item.potion_taint.name=Concentrated Taint
+item.potion_pure.name=Potion of Purity
+#	Wands
+item.wand_fire.name=Wand of Fire
+item.wand_water.name=Wand of Water
+item.wand_lightning.name=Wand of Lightning
+item.wand_reverse.name=Wand of Reversal
+item.wand_tinker.name=Arcane Tinkering Tool
+item.wand_excavation.name=Wand of Equal Trade
+item.wand_bone.name=Wand of Bone
+item.wand_crystal.name=Crystalline Bell
+
