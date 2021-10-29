@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "com.raven_cze.projt2",
+    "name": "Project T2",
+    "description": "Project T2, what did you expect.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "raven_cze"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
