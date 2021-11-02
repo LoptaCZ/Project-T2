@@ -1,10 +1,12 @@
 package raven_cze.projt2.common.item;
 
-import raven_cze.projt2.util.api.ItemPT2Base;
+import net.minecraft.item.Item;
 
-public class ItemCrystal extends ItemPT2Base {
+public class ItemCrystal extends Item {
 
+    /*
     public ItemCrystal(String name, int stackSize, String subNames) {
         super(name, stackSize, subNames);
     }
+     */
 }

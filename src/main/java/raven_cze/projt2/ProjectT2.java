@@ -14,8 +14,11 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
-import raven_cze.projt2.proxies.IProxy;
+import raven_cze.projt2.proxies.CommonProxy;
 import raven_cze.projt2.util.world.WorldGenMonolith;
 
 import java.util.Collection;
@@ -39,7 +42,7 @@ public class ProjectT2 {
     @Mod.Instance(MOD_ID)
     public static ProjectT2 instance;
     @SidedProxy(clientSide = "raven_cze.projt2.proxies.ClientProxy",serverSide = "raven_cze.projt2.proxies.ServerProxy")
-    public static IProxy proxy;
+    public static CommonProxy proxy;
     public static final SimpleNetworkWrapper packetHandler = NetworkRegistry.INSTANCE.newSimpleChannel(MOD_ID);
     private static HashMap SpecialTileHM;
     public static CreativeTabs creativeTab = new CreativeTabs(MOD_ID){
@@ -72,9 +75,28 @@ public class ProjectT2 {
     }
 
     public static class ProjectT2Core {
+        public static class PT2Logger{
+            private static final Logger logger = LogManager.getLogger(ProjectT2.MOD_ID);
+
+            public static void log(Level level,String format){logger.log(level,format, (Throwable) null);}
+            public static void log(Level level,String format,Object[] data){logger.log(level,format,data);}
+            public static void debug(String format){logger.log(Level.DEBUG,format, (Throwable) null);}
+            public static void debug(String format,Object[] data){logger.log(Level.DEBUG,format,data);}
+            public static void info(String format){logger.log(Level.INFO,format, (Throwable) null);}
+            public static void info(String format,Object[] data){logger.log(Level.INFO,format,data);}
+            public static void warn(String format){logger.log(Level.WARN,format, (Throwable) null);}
+            public static void warn(String format,Object[] data){logger.log(Level.WARN,format,data);}
+            public static void error(String format){logger.log(Level.ERROR,format, (Throwable) null);}
+            public static void error(String format,Object[] data){logger.log(Level.ERROR,format,data);}
+            public static void fatal(String format){logger.log(Level.FATAL,format, (Throwable) null);}
+            public static void fatal(String format,Object[] data){logger.log(Level.FATAL,format,data);}
+
+        }
+        //TODO
         public static void GenerateAura(){
 
         }
+        //TODO
         public static void GenerateTaintedArea(){
 
         }
@@ -95,6 +117,7 @@ public class ProjectT2 {
             }
             return false;
         }
+        //TODO
         public static double DistanceToNearestMonolith(World world,int x,int y,int z){
             Collection SpecialTiles;
             SpecialTiles = ProjectT2.SpecialTileHM.values();
@@ -114,10 +137,11 @@ public class ProjectT2 {
                 //PT2Logger.log(Level.ERROR,"Error while executing DistanceToNearestMonolith(World,x,y,z) function",e);}
             return Math.sqrt(distance);
         }
-
+        //TODO
         public static boolean GenerateSilverwood(World world,Random random,int coordX,int coordZ){
             return false;
         }
+        //TODO
         public static boolean GenerateGreatwood(World world,Random random,int coordX,int coordZ){
             return false;
         }

@@ -42,11 +42,11 @@ public class ItemPT2Base extends Item {
             list.add(new ItemStack(this));
         }
     }
-    public String getUnlocalizedName(ItemStack stack){
+    public String getTranslationKey2(ItemStack stack){
         if(getSubNames()!=null){
             String subName=(stack.getItemDamage()<getSubNames().length)?getSubNames()[stack.getItemDamage()]:"";
             return getTranslationKey()+"_"+subName;
         }
-        return getUnlocalizedName(stack);
+        return getTranslationKey(stack);
     }
 }

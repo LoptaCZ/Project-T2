@@ -103,12 +103,14 @@ public class PT2Content {
     public static void registerBlocks(RegistryEvent.Register<Block> event){
         for(Block block:registeredBlocks){
             event.getRegistry().register(block.setRegistryName(block.getTranslationKey()));
+            ProjectT2.ProjectT2Core.PT2Logger.info("Registering BLOCK {}, unlocalized: {}, registry: {}, subtypes: {}",new Object[]{block,block.getTranslationKey(),block.getRegistryName(),null});
         }
     }
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event){
         for(Item item:registeredItems){
             event.getRegistry().register(item.setRegistryName(item.getTranslationKey().replace("item.","")));
+            ProjectT2.ProjectT2Core.PT2Logger.info("Registering ITEM {}, unlocalized: {}, registry: {}, subtypes: {}",new Object[]{item,item.getTranslationKey(),item.getRegistryName(),item.getHasSubtypes()});
         }
     }
 
@@ -118,9 +120,11 @@ public class PT2Content {
             if(item.getHasSubtypes()){
                 for(int meta = 0; meta<new ItemStack(item).getMaxDamage(); meta++){
                     ModelLoader.setCustomModelResourceLocation(item,meta,new ModelResourceLocation(new ResourceLocation(ProjectT2.MOD_ID,item.getTranslationKey()),""));
+                    ProjectT2.ProjectT2Core.PT2Logger.info("ModelLoader: {},{},{},{}",new Object[]{item,meta,new ResourceLocation(ProjectT2.MOD_ID,item.getTranslationKey()),null});
                 }
             }else{
                 ModelLoader.setCustomModelResourceLocation(item,0,new ModelResourceLocation(new ResourceLocation(ProjectT2.MOD_ID,item.getTranslationKey()),""));
+
             }
         }
     }

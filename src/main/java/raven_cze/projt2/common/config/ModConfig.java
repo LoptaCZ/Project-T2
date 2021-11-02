@@ -3,8 +3,8 @@ package raven_cze.projt2.common.config;
 import net.minecraft.client.resources.I18n;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.Level;
+import raven_cze.projt2.ProjectT2;
 import raven_cze.projt2.proxies.CommonProxy;
-import raven_cze.projt2.util.PT2Logger;
 
 public class ModConfig {
     public static final String CATEGORY_NAME_CLIENT="client";
@@ -30,7 +30,7 @@ public class ModConfig {
             initClientConfig(cfg);
             initServerConfig(cfg);
         }catch(Exception e){
-            PT2Logger.log(Level.ERROR,"Problem loading config file!",e);
+            ProjectT2.ProjectT2Core.PT2Logger.error("Problem loading config file!",new Object[]{e});
         }finally{
             if(cfg.hasChanged()) cfg.save();
         }
