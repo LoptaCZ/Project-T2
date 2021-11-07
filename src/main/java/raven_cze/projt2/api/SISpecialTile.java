@@ -1,4 +1,4 @@
-package raven_cze.projt2.util.api;
+package raven_cze.projt2.api;
 
 import java.io.Serializable;
 

@@ -1,29 +1,35 @@
 package raven_cze.projt2.common;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import raven_cze.projt2.ProjectT2;
-import raven_cze.projt2.util.api.ItemPT2Base;
-import raven_cze.projt2.util.api.ItemToolBase;
+import raven_cze.projt2.api.BlockBase;
+import raven_cze.projt2.api.ItemBase;
+import raven_cze.projt2.api.ItemBlockBase;
+import raven_cze.projt2.common.block.BlockResearcher;
+import raven_cze.projt2.common.block.BlockTypes_Hidden;
+import raven_cze.projt2.common.item.ItemCrystal;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Mod.EventBusSubscriber
-public class PT2Content {
-    public static ArrayList<Item> registeredItems;
-    public static ArrayList<Block> registeredBlocks;
+public class PT2Content{
+    public static ArrayList<Block> registeredBlocks = new ArrayList();
+    public static ArrayList<Item> registeredItems = new ArrayList();
+    public static List<Class<?extends TileEntity>> registeredTiles = new ArrayList();
 
-    public static ItemPT2Base itemCrystal;
+    public static ItemBase itemCrystal;
+    /*
     public static ItemPT2Base itemPlant;
     //	thaumcraft.machine
     public static ItemPT2Base itemFocus;
@@ -82,14 +88,58 @@ public class PT2Content {
     public static ItemPT2Base itemDiscoveryTome;
     public static ItemPT2Base itemKnowledgeFragment;
     public static ItemPT2Base itemTheory;
-
+    */
+    //  BLOCKS
+    //public static BlockResearcher blockResearcher;
+    public static BlockBase<BlockTypes_Hidden> blockVoidDevice;
+    //  FLUID(s)
     public static Fluid fluidVis=setupFluid((new Fluid("vis",new ResourceLocation("projt2:blocks/fluid/tcubeanim"),new ResourceLocation("projt2:blocks/fluid/tcubeanim"))).setDensity(4000).setViscosity(4000));
 
-    static {
-        registeredItems = new ArrayList();
-        registeredBlocks = new ArrayList();
 
-        itemCrystal = new ItemPT2Base("crystal", 64, "air", "earth", "fire", "water", "taint", "vis", "empty");
+    static{
+        //      ITEMS
+        itemCrystal = new ItemCrystal();
+        //      BLOCKS
+        blockVoidDevice=(BlockBase)(new BlockBase("void", Material.ROCK, PropertyEnum.create("type",BlockTypes_Hidden.class),ItemBlockBase.class,new Object[0])).setOpaque(true).setHasFlavour(new int[0]);
+    }
+
+    @SubscribeEvent
+    public static void registerBlocks(RegistryEvent.Register<Block> event){
+        if(!registeredBlocks.isEmpty()){
+            for (Block block:registeredBlocks) {
+                if (block!=null) {
+                    ProjectT2.ProjectT2Core.PT2Logger.info("Registering BLOCK {}, unlocalized: {}, registry: {}, subtypes: {}", new Object[]{block, block.getTranslationKey(), block.getRegistryName(), null});
+                    event.getRegistry().register(block.setRegistryName(createRegistryName(block.getTranslationKey())));
+                }
+            }
+        }
+    }
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> event){
+        if(!registeredItems.isEmpty()){
+            for (Item item : registeredItems){
+                if (item != null) {
+                    ProjectT2.ProjectT2Core.PT2Logger.info("Registering ITEM {}, unlocalized: {}, registry: {}, subtypes: {}",new Object[]{item,item.getTranslationKey(),item.getRegistryName(),item.getHasSubtypes()});
+                    event.getRegistry().register(item.setRegistryName(createRegistryName(item.getTranslationKey())));
+                }
+            }
+        }
+        //      ItemBlocks
+        if(!registeredBlocks.isEmpty()){
+            for(Block thing : registeredBlocks){
+                ProjectT2.ProjectT2Core.PT2Logger.info("Registering ITEM_BLOCK {}, unlocalized: {}, registry: {}",new Object[]{thing,thing.getTranslationKey(),thing.getRegistryName()});
+                event.getRegistry().register(Item.getItemFromBlock(thing.setRegistryName(createRegistryName(thing.getTranslationKey()))));
+            }
+        }
+    }
+    public static ResourceLocation createRegistryName(String unlocalized){
+        try{
+            unlocalized = unlocalized.substring(unlocalized.indexOf("projectt2"));
+            unlocalized = unlocalized.replaceFirst("\\.", ":");
+            return new ResourceLocation(unlocalized);
+        }catch(Exception e){
+            return new ResourceLocation(unlocalized);
+        }
     }
 
     private static Fluid setupFluid(Fluid fluid){
@@ -98,35 +148,4 @@ public class PT2Content {
             return FluidRegistry.getFluid(fluid.getName());
         return fluid;
     }
-
-    @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event){
-        for(Block block:registeredBlocks){
-            event.getRegistry().register(block.setRegistryName(block.getTranslationKey()));
-            ProjectT2.ProjectT2Core.PT2Logger.info("Registering BLOCK {}, unlocalized: {}, registry: {}, subtypes: {}",new Object[]{block,block.getTranslationKey(),block.getRegistryName(),null});
-        }
-    }
-    @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event){
-        for(Item item:registeredItems){
-            event.getRegistry().register(item.setRegistryName(item.getTranslationKey().replace("item.","")));
-            ProjectT2.ProjectT2Core.PT2Logger.info("Registering ITEM {}, unlocalized: {}, registry: {}, subtypes: {}",new Object[]{item,item.getTranslationKey(),item.getRegistryName(),item.getHasSubtypes()});
-        }
-    }
-
-    @SubscribeEvent
-    public static void registerModels(ModelRegistryEvent event){
-        for(Item item:registeredItems){
-            if(item.getHasSubtypes()){
-                for(int meta = 0; meta<new ItemStack(item).getMaxDamage(); meta++){
-                    ModelLoader.setCustomModelResourceLocation(item,meta,new ModelResourceLocation(new ResourceLocation(ProjectT2.MOD_ID,item.getTranslationKey()),""));
-                    ProjectT2.ProjectT2Core.PT2Logger.info("ModelLoader: {},{},{},{}",new Object[]{item,meta,new ResourceLocation(ProjectT2.MOD_ID,item.getTranslationKey()),null});
-                }
-            }else{
-                ModelLoader.setCustomModelResourceLocation(item,0,new ModelResourceLocation(new ResourceLocation(ProjectT2.MOD_ID,item.getTranslationKey()),""));
-
-            }
-        }
-    }
-
 }

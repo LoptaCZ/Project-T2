@@ -1,4 +1,4 @@
-package raven_cze.projt2.util.api;
+package raven_cze.projt2.api;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -11,12 +11,13 @@ import raven_cze.projt2.common.PT2Content;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-public class ItemPT2Base extends Item {
+public class ItemBase extends Item {
 
-    private final String itemName;
-    private final String[] subNames;
+    public final String itemName;
+    public final String[] subNames;
+    public boolean registerSubModels;
 
-    public ItemPT2Base(String name, int stackSize, String... subNames){
+    public ItemBase(String name, int stackSize, String... subNames){
         setTranslationKey(name);
         setHasSubtypes((subNames!=null && subNames.length>0));
         setCreativeTab(ProjectT2.creativeTab);
@@ -24,6 +25,7 @@ public class ItemPT2Base extends Item {
 
         this.itemName=name;
         this.subNames=(subNames!=null&&subNames.length>0)?subNames:null;
+        this.registerSubModels=true;
 
         PT2Content.registeredItems.add(this);
     }
@@ -42,10 +44,10 @@ public class ItemPT2Base extends Item {
             list.add(new ItemStack(this));
         }
     }
-    public String getTranslationKey2(ItemStack stack){
+    public String getUnlocalizedName(ItemStack stack){
         if(getSubNames()!=null){
             String subName=(stack.getItemDamage()<getSubNames().length)?getSubNames()[stack.getItemDamage()]:"";
-            return getTranslationKey()+"_"+subName;
+            return getTranslationKey()+"."+subName;
         }
         return getTranslationKey(stack);
     }
