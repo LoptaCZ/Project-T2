@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"axis=x":[{"model":"projt2:block/taint_log-horizontal","x":90,"y":90},{"model":"projt2:block/taint_log-horizontal-type1","x":90,"y":90},{"model":"projt2:block/taint_log-horizontal-type2","x":90,"y":90}]
+		,"axis=y":[{"model":"projt2:block/taint_log"},{"model":"projt2:block/taint_log-type1"},{"model":"projt2:block/taint_log-type2"}]
+		,"axis=z":[{"model":"projt2:block/taint_log-horizontal","x":90},{"model":"projt2:block/taint_log-horizontal-type1","x":90},{"model":"projt2:block/taint_log-horizontal-type2","x":90}]
+	}
+}

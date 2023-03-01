@@ -1,0 +1,26 @@
+{
+    "multipart": [
+        {   "apply": { "model": "projt2:block/conduit/conduit" }},
+        {   "when": { "connect_north": "true" },
+            "apply": { "model": "projt2:block/conduit/conduit_side", "uvlock": false }
+        },
+        {   "when": { "connect_east": "true" },
+            "apply": { "model": "projt2:block/conduit/conduit_side", "y":90, "uvlock": false }
+        },
+        {   "when": { "connect_south": "true" },
+            "apply": { "model": "projt2:block/conduit/conduit_side", "y":180, "uvlock": false }
+        },
+        {   "when": { "connect_west": "true" },
+            "apply": { "model": "projt2:block/conduit/conduit_side", "y":270, "uvlock": false }
+        },
+        {   "when": { "connect_up": "true" },
+            "apply": { "model": "projt2:block/conduit/conduit_side", "x":270, "uvlock": false }
+        },
+        {   "when": { "connect_down": "true" },
+            "apply": { "model": "projt2:block/conduit/conduit_side", "x":90, "uvlock": false }
+        }
+    ]
+}
+
+
+

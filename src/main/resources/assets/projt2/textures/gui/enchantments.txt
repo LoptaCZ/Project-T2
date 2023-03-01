@@ -1,0 +1,62 @@
+[ 0  ]	Protection
+[ 1  ]	Fire Protection
+[ 2  ]	Feather Falling
+[ 3  ]	Blast Protection
+[ 4  ]	Projectile Protection
+[ 5  ]	Respiration
+[ 6  ]	Aqua Affinity
+[ 7  ]	?
+[ 8  ]	?
+[ 9  ]	?
+[ 10 ]	?
+[ 11 ]	?
+[ 12 ]	?
+[ 13 ]	?
+[ 14 ]	?
+[ 15 ]	?
+[ 16 ]	Sharpness
+[ 17 ]	Smite
+[ 18 ]	Bane of Arthropods
+[ 19 ]	Knockback
+[ 20 ]	Fire Aspect
+[ 21 ]	Looting
+[ 22 ]	?
+[ 23 ]	?
+[ 24 ]	?
+[ 25 ]	?
+[ 26 ]	?
+[ 27 ]	?
+[ 28 ]	?
+[ 29 ]	?
+[ 30 ]	?
+[ 31 ]	?
+[ 32 ]	Efficiency
+[ 33 ]	Silk Touch
+[ 34 ]	Unbreaking
+[ 35 ]	Fortune
+[ 36 ]	?
+[ 37 ]	?
+[ 38 ]	?
+[ 39 ]	?
+[ 40 ]	?
+[ 41 ]	?
+[ 42 ]	?
+[ 43 ]	?
+[ 44 ]	?
+[ 45 ]	?
+[ 46 ]	?
+[ 47 ]	?
+[ 48 ]	Power (Arrow)
+[ 49 ]	Punch (Arrow)
+[ 50 ]	Flame (Arrow)
+[ 51 ]	Infinity
+
+[ 100 ]	Vampiric
+[ 101 ]	SoulSteal
+[ 102 ]	Ice Aspect
+[ 103 ]	Venom
+[ 104 ]	Swimming
+[ 105 ]	Self-Repair
+[ 106 ]	Relic Hunter
+[ 107 ]	Striding
+[ 108 ]	Potency

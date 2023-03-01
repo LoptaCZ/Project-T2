@@ -1,0 +1,8 @@
+{
+	"variants": {
+		 "cube_type=0":[{"model":"projt2:block/void_cube_middle"}]
+		,"cube_type=1":[{"model":"projt2:block/void_cube_top"}]
+		,"cube_type=2":[{"model":"projt2:block/void_cube_bottom"}]
+		,"cube_type=3":[{"model":"projt2:block/hole"}]
+	}
+}

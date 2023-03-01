@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " d ",
+    "dbd",
+    " d "
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:book"
+    },
+    "d": {
+      "item": "projt2:discovery"
+    }
+  },
+  "result": {
+    "item": "projt2:discovery_tome"
+  }
+}

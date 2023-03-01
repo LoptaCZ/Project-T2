@@ -1,0 +1,83 @@
+#Lastindex = 71
+#Lost
+#######
+1=This device allows you to repair damage to any items placed within, or recharge certain magical items. This device requires vis to function.
+2=This device allows you to use vis to duplicate items. Only simple items or raw resources can be duplicated.
+3=This marvellous eyewear duplicates all the functionality of the Thaumometer and also allows you to see things that are usually not visible to the naked eye.
+4=This crucible holds more vis and is more efficient than the basic crucible and when it is nearly full it will emit a redstone signal. 
+5=This crucible holds more vis and is more efficient than the basic crucible and when it is nearly full it will emit a redstone signal. This crucible cannot overflow and any excess items remain inside it till there is room to smelt them. 
+7=These boots allows their wearer to make impressive leaps and bounds. Holding shift while jumping reduces the jump height.
+8=These boots allows their wearer to make impressive leaps and bounds. If shift is held while a sufficient distance from the ground, the boots will hurl themselves (and their wearer) down with considerable force, causing a shockwave of blistering heat.
+9=This upgrade increases the speed of devices or thaumic creations it is attached to.
+10=This upgrade increases the efficiency of any devices or thaumic creations it is attached to.
+15=This upgrade allows thaumic devices like enchanters to impart more knowledge or magical effects.
+16=This arcane focus has medium range and spread, but has improved speed.
+17=This arcane focus has long range and medium spread.
+18=This arcane focus has medium range and a wide spread.
+19=This arcane focus has medium range and spread, but consumes low value items to increase the efficiency of the bore.
+24=This magical chest follows you around wherever you go. As long as you keep it fed (or keep food in it's inventory) it should remain healthy and strong. It's a bit noisy and clumsy, but at least it's fireproof.
+25=This device converts vis into pure energy usable by many devices. It generates Industrialcraft EU, RedPower Blutricity and BuildCraft MJ.
+26=This arcane device works exactly like a normal enchantment table, except that it requires vis instead of character levels. 
+27=This arcane device can convert liquid vis back into vis crystals by re-energizing depleted crystals. The type of crystals produced are semi-random (influenced by the surroundings). It can also transform existing crystals into different types.
+29=This bell seems to resonate with vis crystals. You suspect it could be used to retrieve individual crystals from a cluster. It cannot harvest the last remaining crystal in a cluster.
+30=If this charm is kept on your person it will continually regenerate your health. Keep in mind that it can wear out and will be destroyed if overused.
+31=If this charm is kept on your person it will keep you fed and protect you from drowning. Keep in mind that it can wear out and will be destroyed if overused.
+32=This enchanted Thaumium sword is able to call upon the powers of the wind to summon lightning amongst groups of enemies, pull your enemies towards you or even grant the power of flight!
+33=This enchanted Thaumium axe makes short work of anything crafted from wood. Holding shift supresses this power. While right-click is held loose items will flow towards you.
+35=Turn back the hands of time with this mystical wand. This wand allows you to retrieve runic essences and upgrades once they have been placed, though success isn't guaranteed. It can also be used to retrieve animated chests.
+39=This magical pickaxe smolders with inner heat. Any materials harvested is automatically smelted as if by a furnace. Holding shift supressed this power. You can also use it to create a small wisp that will guide you to the most valuable item it can find nearby.
+44=This unstable liquid is a highly concentrated form of Vis. It will evaporate rapidly on exposure to open air, but fortunately almost all of it will seep into the aura.
+50=This protective charm cures you of harmful effects like poison and douses you if you are on fire. It does not protect you from direct fire damage. Keep in mind that it can wear out and will be destroyed if overused.
+54=The enchanted shovel is capable of removing large sections of earth and sand. Holding shift supresses this power. It is also extremely effective at removing tainted ground. If right-clicked it will encourage plants to grow.
+57=This magical carpet will allow you to soar through the air like a bird. Currently it is inert and you must first infuse it with an Extract of Lightest Air to charge it. Its magic will not last forever and it will need to be recharged.
+58=This mystical hoe is capable of tilling or harvesting a large field at once. Holding shift supresses this power.
+62=Items imbued with this enchantment will slowly repair themselves over time. The mystical energy required for this enchantment is drawn directly out of the local aura.
+63=This enchantment has a small chance of revealing an artifact when you slay a foe with a weapon bearing it. Higher levels of the enchantment increases both the occurance and quality of the artifacts found.
+66=Combining the raw elemental power of the Pick of the Core and the Shovel of Renewal with the versatility of the Void Crusher, this tool shatters earth and stone with frightening speed and efficiency.
+67=Combining the speed of the Axe of the Stream, the elemental fury of the Sword of the Zephyr, and the versatility of the Void Cutter, this weapon cuts a swathe through both wood and bone. No enemy or item can escape your grasp while you hold this blade.
+69=This enchantment enhances the effect of certain magical items like wands. It boosts things like damage, range, area of effect or number of blocks effected. The exact attribute it boosts varies from item to item.
+70=A small fountain of pure water always flows from the top of this urn, making it a perfect water source to fill your buckets, bottles or other liquid containers. Filling from it does cause a tiny amount of taint charge.
+71=When broken after midday, this small glowing stone is able to speed up the passage of time until the next dawn.
+
+#Forbidden
+###########
+6=This crucible does not burn physical objects to create vis. Instead it consumes the life force of nearby creatures and converts it into dark energy. This crucible is quite inefficient and produces a lot of tainted vis.
+11=This upgrade increases damage and/or aggression of any devices or thaumic creations it is attached to.
+13=?
+20=What else can I say? It's a brain in a jar. It does occasionally whisper something useful - maybe you should use it instead of bookcases for enchanting or research...
+40=The Dark Infuser works similarly to the normal Infuser, except it is used to create objects of a more malevolent nature. It's speed is determined by the phase of the moon and it requires some tainted vis in addition to pure vis. 
+49=This foreboding charm warps the mind of undead creatures, making them ignore you and turn on their fellows. Keep in mind that it can wear out and will be destroyed if overused.
+53=This wand summons a skeletal archer that will attack nearby enemies. The undead minion will not follow you and will dissapear after a minute.
+56=This sinister mask hexes any living creature you look at directly. The exact effects vary, but it can cause pain, debilitating weakness or even death if you focus you gaze long enough.
+59=This dread bow is crafted from the bones of fallen undead. Its light construction allows it to fire faster than a normal bow and occasionally living foes felled by its arrows rise as undead themselves.
+60=Weapons imbued with this enchantment have a chance to drain some of the life energy out of struck foes to heal your wounds. The higher the level of the enchant, the greater the chance for the effect to trigger.
+61=Weapons with this enchantment causes the attacked creature's spirit to be trapped in the mortal realm. If the creature is slain there is a chance the spirit will remain behind as a soul fragment. The chance of this occurring depends on the level of the enchantment and the lifeforce of the creature attacked. Soul fragments have various uses in dark magic.
+64=This charm absorbs any experience orbs that foes drop and converts them into Soul Fragments.
+65=Ever wanted to read your Thaumonomicon by the light of burning souls? Here is your chance! The tormented glow of the souls also seems to draw vis and taint from surrounding chunks to raise the levels of the chunk the brazier is placed in.
+68=Enchanting with Vis is fine and well, but how can you trust this rare resource to the fickle whims of fate? Far better to intrust it to a sinister, disembodied brain floating in foul liquid. Besides, it whispers such wonderful secrets...
+
+#Tainted
+#########
+12=This upgrade allows any devices or creations it is attached to harness or create taint or tainted products.
+21=Having learnt something of the nature of Taint, you are now able to build the Purifier. It functions in a similar manner to the Filter, except some of the tainted vis passing through it is simply destroyed instead of being pumped into the air.
+22=This totem fills the air with good vibes and positive energy. It probably does the local aura a world of good. It also prevents Tainted ground from forming near it.
+23=This totem fills the air with sinister vibes and dark, twisted magic. You're not sure what it is doing to the local aura, but you doubt it is good.
+42=This foul liquid must be handled with great care. Dropping it will cause Taint to spread in the area. Fortunately it does no lasting harm to the local aura unless you soak the area in it. Why would you do that?
+43=This glowing liquid burns away Taint on contact and returns it to its natural state. Unfortunately it has only a limited positive effect on the local aura so the Taint may return.
+45=Unlike the normal valve conduit, this valve has three possible settings: Closed (dark), only let vis pass (light blue), and only let taint pass (dark purple).
+55=The Thaumium Reinforced Tank can hold twice as much vis and taint as the normal tank and is also much more resistant to the negative effects of storing large amounts of taint.
+
+#Eldritch
+##########
+14=Harnessing the power of the Void, this upgrade increases the capacity of devices or thaumic creations it is attached to.
+28=This mysterious container seems to be much bigger on the inside. What is more, it's top seems like it should have something connected to it...
+34=This bracelet allows you to travel to a random Void Portal. To link to a different network simply click on a Void Portal Seal.
+36=This device seems to be designed to attach on top of a Void Chest. It allows you to link other Void Chests with this attachment into one of six networks of shared inventories.
+37=This strange, dark metal seems to suck in the light around it. You can also create simple armor from these ingots that has similar properties to diamond armor, but is more durable and easier to enchant. You can't craft tools... yet.
+38=This stone has the same appearance as that which makes up the bulk of a monoliths structure, but you are not quite able to duplicate it's indestructability.
+41=This strange device seems to be able to draw energy from a nearby Monolith and somehow shape it into liquid darkness. These drops of darkness only form around seeds. Light (even moonlight) slows it's operation.
+46=These strange mechanism are useful for many of the eldritch devices that can be found in the monoliths. They are also good sources of knowledge to learn more about this strange and arcane technology.
+47=This mechanism looks like it would fit into the slots you have found in the monolith chamber walls. Unfortunately it is inert. You might need to research it further to discover the different ways it can be activated.
+48=This mechanism looks like it would fit into the slots you have found in the monolith chamber walls. It is crackling with energy and seems ready to perform whatever task it was designed for.
+51=This versatile tool crafted from void metal is able to crush rock, dirt or even stranger materials. It is not a bad weapon either and will knock back any foes you attack. 
+52=This preternaturally sharp weapon cuts through flesh and wood with equal ease. Any foes cut by the blade are left in a weakened state as its eldritch energies saps their strength.

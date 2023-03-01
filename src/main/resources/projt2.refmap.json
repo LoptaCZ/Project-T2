@@ -1,0 +1,7 @@
+{
+  "mappings": {
+    "com/raven_cze/projt2/mixin/client/MixinItemInHandRenderer":{
+      "renderItem": "Lnet/minecraft/client/renderer/ItemInHandRenderer;m_109322_(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/client/renderer/block/model/ItemTransforms$TransformType;ZLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V"
+    }
+  }
+}

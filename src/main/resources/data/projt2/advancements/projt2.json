@@ -1,0 +1,32 @@
+{
+	"display":{
+		"icon":{
+			"item":"projt2:discovery_tome"
+		},
+		"title":{"translate":"itemGroup.projt2"},
+		"description":{"translate":"block.projt2.hole"},
+		"frame":"task",
+		"show_toast":"true",
+		"announce_to_chat":"true",
+		"background":"projt2:textures/block/blocks.png"
+	},
+	"criteria": {
+		"research_book": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"projt2:discovery_tome"
+						]
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"research_book"
+		]
+	]
+}

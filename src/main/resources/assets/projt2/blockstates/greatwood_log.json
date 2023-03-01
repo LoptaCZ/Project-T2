@@ -1,0 +1,8 @@
+{
+	"forge_marker":1,
+	"variants": {
+		"axis=x":{"model":"projt2:block/greatwood_log-horizontal","x":90,"y":90}
+		,"axis=y":{"model":"projt2:block/greatwood_log"}
+		,"axis=z":{"model":"projt2:block/greatwood_log-horizontal","x":90}
+	}
+}

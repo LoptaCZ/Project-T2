@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"stage=0":{"model":"projt2:block/greatwood_sapling"},
+		"stage=1":{"model":"projt2:block/greatwood_sapling"}
+	}
+}

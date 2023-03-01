@@ -1,0 +1,12 @@
+{
+	"variants": {
+		"":[
+			{"model":"projt2:block/totem/totem_taint"}
+			,{"model":"projt2:block/totem/totem_taint-type0"}
+			,{"model":"projt2:block/totem/totem_taint-type1"}
+			,{"model":"projt2:block/totem/totem_taint-type2"}
+			,{"model":"projt2:block/totem/totem_taint-type3"}
+			,{"model":"projt2:block/totem/totem_taint-type4"}
+		]
+	}
+}

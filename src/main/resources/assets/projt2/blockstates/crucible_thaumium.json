@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"soul_active=true":{"model":"projt2:block/crucible_thaumium"},
+		"soul_active=false":{"model":"projt2:block/crucible_thaumium"}
+	}
+}

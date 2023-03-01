@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/cube_all",
+	"textures": {
+		"4": "projt2:particle/particles"
+	},
+	"elements": [
+		{
+			"name": "symbol",
+			"from": [3, 7, 3],
+			"to": [13, 12, 13],
+			"faces": {
+				"north": {"uv": [8, 14, 10, 16], "texture": "#4"},
+				"east": {"uv": [8, 14, 10, 16], "texture": "#4"},
+				"south": {"uv": [8, 14, 10, 16], "texture": "#4"},
+				"west": {"uv": [8, 14, 10, 16], "texture": "#4"},
+				"up": {"uv": [16, 0, 16, 0], "texture": "#4"},
+				"down": {"uv": [16, 0, 16, 0], "texture": "#4"}
+			}
+		}
+	]
+}

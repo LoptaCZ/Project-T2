@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "compatibilityLevel": "JAVA_17",
+  "package": "com.raven_cze.projt2.mixin",
+  "mixins": [
+  ],
+  "client": [
+    "client.ItemInHandRenderer"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "projt2.refmap.json"
+}

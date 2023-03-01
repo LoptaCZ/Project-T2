@@ -1,0 +1,7 @@
+{
+    "parent":"minecraft:block/cube_column_horizontal",
+    "textures":{
+        "side":"projt2:block/petrified_side",
+        "end":"projt2:block/petrified_top"
+    }
+}

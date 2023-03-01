@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "projt2:block/silverwood_leaves"
+  }
+}

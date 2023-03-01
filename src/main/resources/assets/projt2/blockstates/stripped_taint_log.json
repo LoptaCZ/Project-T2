@@ -1,0 +1,7 @@
+{
+	"variants": {
+		 "axis=x":{"model":"projt2:block/stripped_taint_log-horizontal","x":90,"y":90}
+		,"axis=y":{"model":"projt2:block/stripped_taint_log"}
+		,"axis=z":{"model":"projt2:block/stripped_taint_log-horizontal","x":90}
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/cube_all",
+	"textures": {
+		"0": "projt2:block/conduit",
+		"1": "projt2:block/conduit_sides",
+		"particle": "projt2:block/conduit"
+	},
+	"elements": [
+		{
+			"from": [6, 6, 0],
+			"to": [10, 10, 6],
+			"faces": {
+				"north": {"uv": [6, 6, 10, 10], "texture": "#0"},
+				"east": {"uv": [0, 6, 4, 10], "texture": "#1"},
+				"south": {"uv": [6, 6, 10, 10], "texture": "#0"},
+				"west": {"uv": [12, 6, 16, 10], "texture": "#1"},
+				"up": {"uv": [6, 0, 10, 4], "texture": "#1"},
+				"down": {"uv": [6, 12, 10, 16], "texture": "#1"}
+			}
+		}
+	]
+}

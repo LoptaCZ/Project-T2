@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "fff",
+    "fbf",
+    "fff"
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:book"
+    },
+    "f": {
+      "item": "projt2:fragment"
+    }
+  },
+  "result": {
+    "item": "projt2:discovery_tome"
+  }
+}

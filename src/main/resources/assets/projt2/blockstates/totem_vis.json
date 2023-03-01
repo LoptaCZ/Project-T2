@@ -1,0 +1,12 @@
+{
+	"variants": {
+		"":[
+			{"model":"projt2:block/totem/totem_vis"}
+			,{"model":"projt2:block/totem/totem_vis-type0"}
+			,{"model":"projt2:block/totem/totem_vis-type1"}
+			,{"model":"projt2:block/totem/totem_vis-type2"}
+			,{"model":"projt2:block/totem/totem_vis-type3"}
+			,{"model":"projt2:block/totem/totem_vis-type4"}
+		]
+	}
+}

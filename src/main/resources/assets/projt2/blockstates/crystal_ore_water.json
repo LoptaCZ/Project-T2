@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"direction=north":{"model":"projt2:block/hole"},
+		"direction=east":{"model":"projt2:block/hole"},
+		"direction=south":{"model":"projt2:block/hole"},
+		"direction=west":{"model":"projt2:block/hole"},
+		"direction=up":{"model":"projt2:block/hole"},
+		"direction=down":{"model":"projt2:block/hole"}
+	}
+}

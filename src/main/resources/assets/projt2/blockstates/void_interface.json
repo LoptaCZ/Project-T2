@@ -1,0 +1,35 @@
+{
+
+	"multipart":[
+		{"apply":{"model":"projt2:block/void_interface"}},
+
+		{"when":
+			{"void_frequency":"0"},
+				"apply":{"model":"projt2:block/void_interface"}
+		},
+		{"when":
+			{"void_frequency":"1"},
+				"apply":{"model":"projt2:block/void_interface_vis"}
+		},
+		{"when":
+			{"void_frequency":"2"},
+				"apply":{"model":"projt2:block/void_interface_air"}
+		},
+		{"when":
+			{"void_frequency":"3"},
+				"apply":{"model":"projt2:block/void_interface_water"}
+		},
+		{"when":
+			{"void_frequency":"4"},
+				"apply":{"model":"projt2:block/void_interface_earth"}
+		},
+		{"when":
+			{"void_frequency":"5"},
+				"apply":{"model":"projt2:block/void_interface_fire"}
+		},
+		{"when":
+			{"void_frequency":"6"},
+				"apply":{"model":"projt2:block/void_interface_taint"}
+		}
+	]
+}

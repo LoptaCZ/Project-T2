@@ -1,0 +1,8 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "projt2:block/eldritch",
+		"particle": "projt2:block/eldritch"
+	}
+}

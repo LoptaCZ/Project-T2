@@ -1,0 +1,29 @@
+{
+	"variants": {
+		"direction=north":{
+			"model":"projt2:block/arcane_seal",
+			"x":90
+		},
+		"direction=east":{
+			"model":"projt2:block/arcane_seal",
+			"x":90,
+			"y":90
+		},
+		"direction=south":{
+			"model":"projt2:block/arcane_seal",
+			"x":270
+		},
+		"direction=west":{
+			"model":"projt2:block/arcane_seal",
+			"x":90,
+			"y":270
+		},
+		"direction=up":{
+			"model":"projt2:block/arcane_seal"
+		},
+		"direction=down":{
+			"model":"projt2:block/arcane_seal",
+			"x":180
+		}
+	}
+}

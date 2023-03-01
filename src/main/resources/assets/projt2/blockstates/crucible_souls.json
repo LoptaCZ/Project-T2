@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"soul_active=false":{"model":"projt2:block/crucible_soul"},
+		"soul_active=true":{"model":"projt2:block/crucible_soul_active"}
+	}
+}

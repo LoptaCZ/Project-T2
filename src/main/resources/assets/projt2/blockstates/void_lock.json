@@ -1,0 +1,92 @@
+{
+    "multipart": [
+    	{   "apply": { "model": "projt2:block/void_lock" }},
+    	{   "when": {"north_rune": "0"},
+            "apply": {"model":"projt2:block/void/north_vis","uvlock":false}
+        },
+        {   "when": {"east_rune": "0"},
+            "apply": {"model":"projt2:block/void/east_vis","uvlock":false}
+        },
+        {   "when": {"south_rune": "0"},
+            "apply": {"model":"projt2:block/void/south_vis","uvlock":false}
+        },
+        {   "when": {"west_rune": "0"},
+            "apply": {"model":"projt2:block/void/west_vis","uvlock":false}
+        },
+
+
+
+        {   "when": {"north_rune": "1"},
+            "apply": {"model":"projt2:block/void/north_air","uvlock":false}
+        },
+        {   "when": {"east_rune": "1"},
+            "apply": {"model":"projt2:block/void/east_air","uvlock":false}
+        },
+        {   "when": {"south_rune": "1"},
+            "apply": {"model":"projt2:block/void/south_air","uvlock":false}
+        },
+        {   "when": {"west_rune": "1"},
+            "apply": {"model":"projt2:block/void/west_air","uvlock":false}
+        },
+
+
+
+        {   "when": {"north_rune": "2"},
+            "apply": {"model":"projt2:block/void/north_water","uvlock":false}
+        },
+        {   "when": {"east_rune": "2"},
+            "apply": {"model":"projt2:block/void/east_water","uvlock":false}
+        },
+        {   "when": {"south_rune": "2"},
+            "apply": {"model":"projt2:block/void/south_water","uvlock":false}
+        },
+        {   "when": {"west_rune": "2"},
+            "apply": {"model":"projt2:block/void/west_water","uvlock":false}
+        },
+
+
+        
+        {   "when": {"north_rune": "3"},
+            "apply": {"model":"projt2:block/void/north_earth","uvlock":false}
+        },
+        {   "when": {"east_rune": "3"},
+            "apply": {"model":"projt2:block/void/east_earth","uvlock":false}
+        },
+        {   "when": {"south_rune": "3"},
+            "apply": {"model":"projt2:block/void/south_earth","uvlock":false}
+        },
+        {   "when": {"west_rune": "3"},
+            "apply": {"model":"projt2:block/void/west_earth","uvlock":false}
+        },
+
+
+        
+        {   "when": {"north_rune": "4"},
+            "apply": {"model":"projt2:block/void/north_fire","uvlock":false}
+        },
+        {   "when": {"east_rune": "4"},
+            "apply": {"model":"projt2:block/void/east_fire","uvlock":false}
+        },
+        {   "when": {"south_rune": "4"},
+            "apply": {"model":"projt2:block/void/south_fire","uvlock":false}
+        },
+        {   "when": {"west_rune": "4"},
+            "apply": {"model":"projt2:block/void/west_fire","uvlock":false}
+        },
+
+
+        
+        {   "when": {"north_rune": "5"},
+            "apply": {"model":"projt2:block/void/north_taint","uvlock":false}
+        },
+        {   "when": {"east_rune": "5"},
+            "apply": {"model":"projt2:block/void/east_taint","uvlock":false}
+        },
+        {   "when": {"south_rune": "5"},
+            "apply": {"model":"projt2:block/void/south_taint","uvlock":false}
+        },
+        {   "when": {"west_rune": "5"},
+            "apply": {"model":"projt2:block/void/west_taint","uvlock":false}
+        }
+    ]
+}

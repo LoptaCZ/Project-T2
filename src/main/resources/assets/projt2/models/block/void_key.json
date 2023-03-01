@@ -1,0 +1,23 @@
+{
+	"parent": "block/cube_all",
+	"ambientocclusion": false,
+	"textures": {
+		"0": "projt2:block/monument_lock_top",
+		"1": "projt2:block/eldritch",
+		"particle": "projt2:block/monument_lock_top"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		}
+	]
+}

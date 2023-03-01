@@ -1,0 +1,7 @@
+{
+    "parent":"minecraft:block/cube_column",
+    "textures":{
+        "side":"projt2:block/totem_dusk_side1",
+        "end":"projt2:block/totem_dusk_top"
+    }
+}
