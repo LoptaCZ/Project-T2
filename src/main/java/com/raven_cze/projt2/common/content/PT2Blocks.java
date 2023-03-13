@@ -3,6 +3,7 @@ package com.raven_cze.projt2.common.content;
 import com.raven_cze.projt2.ProjectT2;
 import com.raven_cze.projt2.common.config.CommonCFG;
 import com.raven_cze.projt2.common.content.blocks.*;
+import com.raven_cze.projt2.common.content.blocks.apparatus.BlockApparatusMetal;
 import com.raven_cze.projt2.common.content.blocks.apparatus.BlockApparatusStone;
 import com.raven_cze.projt2.common.content.blocks.references.FlammableRotatedPillarBlock;
 import com.raven_cze.projt2.common.content.blocks.references.PT2SaplingBlock;
@@ -58,38 +59,39 @@ public class PT2Blocks{
 
 
 
-    public static final RegistryObject<Block>CRYSTAL_ORE_VIS=register("crystal_ore_vis",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("vis"));
-    public static final RegistryObject<Block>CRYSTAL_ORE_WATER=register("crystal_ore_water",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("water"));
-    public static final RegistryObject<Block>CRYSTAL_ORE_EARTH=register("crystal_ore_earth",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("earth"));
-    public static final RegistryObject<Block>CRYSTAL_ORE_FIRE=register("crystal_ore_fire",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("fire"));
-    public static final RegistryObject<Block>CRYSTAL_ORE_TAINT=register("crystal_ore_taint",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("taint"));
-    public static final RegistryObject<Block>CRYSTAL_ORE_AIR=register("crystal_ore_air",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("air"));
-    public static final RegistryObject<Block>CINNABAR=register("cinnabar_ore",()->new Block(STONE));
-    public static final RegistryObject<Block>GLOW_TAINTWEED=register("taintweed_glow",()->new Block(PLANT));
-    public static final RegistryObject<Block>GREATWOOD_LEAVES=register("greatwood_leaves",()->new LeavesBlock(LEAVES.color(MaterialColor.COLOR_GREEN)));
-    public static final RegistryObject<Block>GREATWOOD_LOG=register("greatwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
-    public static final RegistryObject<Block>STRIPPED_GREATWOOD_LOG=register("stripped_greatwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
-    public static final RegistryObject<Block>GREATWOOD_SAPLING=register("greatwood_sapling",()->new PT2SaplingBlock(new GreatwoodGrower(),PLANT));
-    public static final RegistryObject<Block>NITOR=register("nitor",()->new BlockNitor(PROPERTIES.noCollission()));
-    public static final RegistryObject<Block>PETRIFIED_LOG=register("petrified_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
-    public static final RegistryObject<Block>STRIPPED_PETRIFIED_LOG=register("stripped_petrified_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
-    public static final RegistryObject<Block>SILVERWOOD_LEAVES=register("silverwood_leaves",()->new LeavesBlock(LEAVES.color(MaterialColor.COLOR_GREEN)));
-    public static final RegistryObject<Block>SILVERWOOD_LOG=register("silverwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
-    public static final RegistryObject<Block>STRIPPED_SILVERWOOD_LOG=register("stripped_silverwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
-    public static final RegistryObject<Block>TAINT_LEAVES=register("taint_leaves",()->new LeavesBlock(LEAVES.color(MaterialColor.COLOR_PURPLE)));
-    public static final RegistryObject<Block>TAINT_LOG=register("taint_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
-    public static final RegistryObject<Block>STRIPPED_TAINT_LOG=register("stripped_taint_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
-    public static final RegistryObject<Block>CRUCIBLE_BASIC=register("crucible_basic",()->new BlockCrucible(METAL).setTETier(1));
-    public static final RegistryObject<Block>CRUCIBLE_EYES=register("crucible_eyes",()->new BlockCrucible(METAL).setTETier(2));
-    public static final RegistryObject<Block>CRUCIBLE_SOULS=register("crucible_souls",()->new BlockCrucible(METAL).setTETier(4));
-    public static final RegistryObject<Block>CRUCIBLE_THAUMIUM=register("crucible_thaumium",()->new BlockCrucible(METAL).setTETier(3));
+    public static RegistryObject<Block>CRYSTAL_ORE_VIS=register("crystal_ore_vis",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("vis"));
+    public static RegistryObject<Block>CRYSTAL_ORE_WATER=register("crystal_ore_water",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("water"));
+    public static RegistryObject<Block>CRYSTAL_ORE_EARTH=register("crystal_ore_earth",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("earth"));
+    public static RegistryObject<Block>CRYSTAL_ORE_FIRE=register("crystal_ore_fire",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("fire"));
+    public static RegistryObject<Block>CRYSTAL_ORE_TAINT=register("crystal_ore_taint",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("taint"));
+    public static RegistryObject<Block>CRYSTAL_ORE_AIR=register("crystal_ore_air",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("air"));
+    public static RegistryObject<Block>CINNABAR=register("cinnabar_ore",()->new Block(STONE));
+    public static RegistryObject<Block>GLOW_TAINTWEED=register("taintweed_glow",()->new Block(PLANT));
+    public static RegistryObject<Block>GREATWOOD_LEAVES=register("greatwood_leaves",()->new LeavesBlock(LEAVES.color(MaterialColor.COLOR_GREEN)));
+    public static RegistryObject<Block>GREATWOOD_LOG=register("greatwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
+    public static RegistryObject<Block>STRIPPED_GREATWOOD_LOG=register("stripped_greatwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
+    public static RegistryObject<Block>GREATWOOD_SAPLING=register("greatwood_sapling",()->new PT2SaplingBlock(new GreatwoodGrower(),PLANT));
+    public static RegistryObject<Block>NITOR=register("nitor",()->new BlockNitor(PROPERTIES.noCollission()));
+    public static RegistryObject<Block>PETRIFIED_LOG=register("petrified_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
+    public static RegistryObject<Block>STRIPPED_PETRIFIED_LOG=register("stripped_petrified_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
+    public static RegistryObject<Block>SILVERWOOD_LEAVES=register("silverwood_leaves",()->new LeavesBlock(LEAVES.color(MaterialColor.COLOR_GREEN)));
+    public static RegistryObject<Block>SILVERWOOD_LOG=register("silverwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
+    public static RegistryObject<Block>STRIPPED_SILVERWOOD_LOG=register("stripped_silverwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
+    public static RegistryObject<Block>TAINT_LEAVES=register("taint_leaves",()->new LeavesBlock(LEAVES.color(MaterialColor.COLOR_PURPLE)));
+    public static RegistryObject<Block>TAINT_LOG=register("taint_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
+    public static RegistryObject<Block>STRIPPED_TAINT_LOG=register("stripped_taint_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
+    public static RegistryObject<Block>CRUCIBLE_BASIC=register("crucible_basic",()->new BlockApparatusMetal(METAL));
+    public static RegistryObject<Block>CRUCIBLE_EYES=register("crucible_eyes",()->new BlockApparatusMetal(METAL));
+    public static RegistryObject<Block>CRUCIBLE_SOULS=register("crucible_souls",()->new BlockApparatusMetal(METAL));
+    public static RegistryObject<Block>CRUCIBLE_THAUMIUM=register("crucible_thaumium",()->new BlockApparatusMetal(METAL));
     public static RegistryObject<Block>CONDUIT=register("conduit",()->new BlockConduit(FRAGILE));
-    public static RegistryObject<Block>FURNACE=register("furnace",()->new BlockArcaneFurnace(METAL));
+    public static RegistryObject<Block>FURNACE=register("furnace",()->new BlockApparatusMetal(METAL));
+    public static RegistryObject<Block>GENERATOR=register("generator",()->new BlockApparatusMetal(METAL));
     public static RegistryObject<Block>TOTEM_BAD=register("totem_taint",()->new BlockTotem(WOOD,true));
     public static RegistryObject<Block>TOTEM_GOOD=register("totem_vis",()->new BlockTotem(WOOD,false));
     public static RegistryObject<Block>ELDRITCH=register("eldritch",()->new BlockEldritch(STONE,false));
     public static RegistryObject<Block>ELDRITCH_MONOLITH=registerNoItem("eldritch_monolith",()->new BlockEldritch(STONE,true));
-    public static RegistryObject<Block>VOID_CHEST=register("void_chest",()->new BlockVoidChest(METAL));
+    public static RegistryObject<Block>VOID_CHEST=register("void_chest",()->new BlockApparatusMetal(METAL));
     public static RegistryObject<Block>VOID_INTERFACE=register("void_interface",()->new BlockVoidInterface(METAL));
     public static RegistryObject<Block>SEAL=register("arcane_seal",()->new BlockApparatusStone(METAL));
     public static RegistryObject<Block>VOID_LOCK=registerNoItem("void_lock",()->new BlockVoidLock(STONE));
@@ -116,7 +118,7 @@ public class PT2Blocks{
             Block block=blockRegistryObject.get();
             if(block.getRegistryName()!=null){
                 String regName=block.getRegistryName().getPath();
-                if(regName.contains("leaves")) ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutout());
+                     if(regName.contains("leaves"))ItemBlockRenderTypes.setRenderLayer(block,RenderType.cutout());
                 else if(regName.contains("sapling"))ItemBlockRenderTypes.setRenderLayer(block,RenderType.cutout());
                 else if(regName.contains("void"))ItemBlockRenderTypes.setRenderLayer(block,RenderType.cutout());
                 else if(regName.contains("crystal"))ItemBlockRenderTypes.setRenderLayer(block,RenderType.translucent());
@@ -127,8 +129,8 @@ public class PT2Blocks{
                 else if(regName.contains("quicksilver"))ItemBlockRenderTypes.setRenderLayer(block,RenderType.cutout());
                 else if(regName.contains("shimmerleaf"))ItemBlockRenderTypes.setRenderLayer(block,RenderType.cutout());
                 else if(regName.contains("seal"))ItemBlockRenderTypes.setRenderLayer(block,RenderType.cutout());
+                else if(regName.contains("generator"))ItemBlockRenderTypes.setRenderLayer(block,RenderType.translucent());
             }
         }
-        //ItemBlockRenderTypes.setRenderLayer((Block) null, RenderType.cutout());
     }
 }

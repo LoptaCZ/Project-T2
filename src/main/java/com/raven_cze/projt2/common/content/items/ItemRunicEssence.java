@@ -21,7 +21,6 @@ public class ItemRunicEssence extends PT2Item{
             boolean added=false;
             for(int runa=0;runa<3;runa++){
                 if(seal.runes[runa]==-1){
-                    if(!ctx.getLevel().isClientSide())ProjectT2.LOGGER.debug(ProjectT2.MARKERS.DEBUG,seal.runes[runa]);
                     seal.runes[runa]=getRuneByte(ctx.getItemInHand().getItem().getRegistryName());
 
                     added=true;
@@ -31,6 +30,8 @@ public class ItemRunicEssence extends PT2Item{
                     //  Add Ticker for Portal & ChunkLoader
                     //  if(seal.runes[0]==0 && seal.runes[1]==1){}
                     //  if(seal.runes[0]==0 && seal.runes[1]==3){}
+
+                    if(!ctx.getLevel().isClientSide())ProjectT2.LOGGER.debug(ProjectT2.MARKERS.DEBUG,seal.runes[runa]);
                     break;
                 }
             }

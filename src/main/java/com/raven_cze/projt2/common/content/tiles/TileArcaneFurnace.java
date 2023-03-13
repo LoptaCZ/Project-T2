@@ -1,6 +1,6 @@
 package com.raven_cze.projt2.common.content.tiles;
 
-import com.raven_cze.projt2.client.gui.container.ArcaneFurnaceMenu;
+import com.raven_cze.projt2.common.content.world.inventory.ArcaneFurnaceMenu;
 
 import com.raven_cze.projt2.common.content.PT2Tiles;
 import net.minecraft.client.resources.language.I18n;
@@ -29,7 +29,7 @@ public class TileArcaneFurnace extends BlockEntity implements MenuProvider{
 		protected void onContentsChanged(int slot){setChanged();}
 	};
 	public boolean isBurning;
-    private LazyOptional<IItemHandler>lazyHandler=LazyOptional.empty();
+    private final LazyOptional<IItemHandler>lazyHandler=LazyOptional.empty();
 	protected final ContainerData data;
 	private int progress;
 	private int maxProgress;

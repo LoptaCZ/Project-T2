@@ -1,6 +1,6 @@
 package com.raven_cze.projt2.common.content.items;
 
-import com.raven_cze.projt2.client.gui.container.CrystalBallMenu;
+import com.raven_cze.projt2.common.content.world.inventory.CrystalBallMenu;
 import io.netty.buffer.Unpooled;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;

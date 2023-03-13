@@ -19,6 +19,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -87,7 +88,7 @@ public class TileCrucible extends BlockEntity implements IConnection,ITickableBl
 	}
 	
 	public void setTier(short t){
-		Utils.Math.clamp(t,1,4);
+		t=(short)Mth.clamp(t,1,4);
 		switch(t){
 			case 1 -> {        //	Default
 				this.maxVis = 500.0F;

@@ -67,13 +67,17 @@ public class BlockApparatusStone extends BlockApparatus implements EntityBlock{
 	@Override
 	public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter getter, @NotNull BlockPos pos, @NotNull CollisionContext context){
 		VoxelShape shape=Shapes.create(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
-		switch(state.getValue(DIRECTION)){
-			case UP->shape=Shapes.create(0.25F,0.0F,0.25F,0.75F,0.0625,0.75F);
-			case DOWN->shape=Shapes.create(0.25F,0.9375F,0.25F,0.75F,1.0F,0.75F);
-			case NORTH->shape=Shapes.create(0.25F,0.25F,0.9375F,0.75F,0.75F,1.0F);
-			case EAST->shape=Shapes.create(0.0F,0.25F,0.25F,0.0625F,0.75F,0.75F);
-			case WEST->shape=Shapes.create(0.9375F,0.25F,0.25F,1.0F,0.75F,0.75F);
-			case SOUTH->shape=Shapes.create(0.25F,0.25F,0.0F,0.75F,0.75F,0.0625F);
+		if(state.getBlock().getRegistryName()!=null){
+			if(state.getBlock().getRegistryName().getPath().equals("arcane_seal")){
+				switch(state.getValue(DIRECTION)){
+					case UP -> shape = Shapes.create(0.25F, 0.0F, 0.25F, 0.75F, 0.0625, 0.75F);
+					case DOWN -> shape = Shapes.create(0.25F, 0.9375F, 0.25F, 0.75F, 1.0F, 0.75F);
+					case NORTH -> shape = Shapes.create(0.25F, 0.25F, 0.9375F, 0.75F, 0.75F, 1.0F);
+					case EAST -> shape = Shapes.create(0.0F, 0.25F, 0.25F, 0.0625F, 0.75F, 0.75F);
+					case WEST -> shape = Shapes.create(0.9375F, 0.25F, 0.25F, 1.0F, 0.75F, 0.75F);
+					case SOUTH -> shape = Shapes.create(0.25F, 0.25F, 0.0F, 0.75F, 0.75F, 0.0625F);
+				}
+			}
 		}
 		return shape;
 	}

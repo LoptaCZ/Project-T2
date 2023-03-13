@@ -2,6 +2,7 @@ package com.raven_cze.projt2;
 
 import com.raven_cze.projt2.client.ClientHandler;
 import com.raven_cze.projt2.client.TickHandler;
+import com.raven_cze.projt2.client.gui.screen.DiscoveryTomeScreen;
 import com.raven_cze.projt2.client.gui.screen.VoidChestScreen;
 import com.raven_cze.projt2.common.PT2SaveData;
 import com.raven_cze.projt2.common.config.ClientCFG;
@@ -78,7 +79,8 @@ public class ProjectT2{
 	}
 	private void setupClient(final FMLClientSetupEvent event){
 		event.enqueueWork(()->{
-
+			MenuScreens.register(PT2Menus.MENU_DISCOVERY_TOME.get(),DiscoveryTomeScreen::new);
+			MenuScreens.register(PT2Menus.MENU_VOID_CHEST.get(),VoidChestScreen::new);
 		});
 		IEventBus bus=MinecraftForge.EVENT_BUS;
 		bus.addListener((TickEvent.ClientTickEvent e)->{
@@ -89,9 +91,7 @@ public class ProjectT2{
 			if(e.phase==TickEvent.Phase.START)TickHandler.renderTick(e.renderTickTime);
 		} );
 		//TODO PT2Tiles.prepareSpecialRender()
-		bus.addListener((e) -> PT2Blocks.prepareSpecialRender());
-
-		MenuScreens.register(PT2Menus.MENU_VOID_CHEST.get(),VoidChestScreen::new);
+		bus.addListener((e)->PT2Blocks.prepareSpecialRender());
 	}
 	private void setup(final FMLCommonSetupEvent event){
 		if(CommonCFG.debugMode.get())LOGGER.info("Pre-Init Phase");

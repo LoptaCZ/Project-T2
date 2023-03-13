@@ -2,11 +2,16 @@ package com.raven_cze.projt2.api;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class TileVisUser extends BlockEntity implements IConnection{
+public abstract class TileVisUser extends BlockEntity implements IConnection{
     public int visSuction=0;
     public int taintSuction=0;
     public TileVisUser(BlockEntityType<?> pType,BlockPos pos,BlockState state){

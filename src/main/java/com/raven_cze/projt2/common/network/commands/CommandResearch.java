@@ -13,6 +13,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 
+import java.util.function.Predicate;
+
 public class CommandResearch{
     public static LiteralArgumentBuilder<CommandSourceStack>create(){
         LiteralArgumentBuilder<CommandSourceStack>main=Commands.literal("research");

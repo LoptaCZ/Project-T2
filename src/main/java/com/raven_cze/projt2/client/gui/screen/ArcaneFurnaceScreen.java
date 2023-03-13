@@ -2,7 +2,7 @@ package com.raven_cze.projt2.client.gui.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.raven_cze.projt2.client.gui.container.ArcaneFurnaceMenu;
+import com.raven_cze.projt2.common.content.world.inventory.ArcaneFurnaceMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;

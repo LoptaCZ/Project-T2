@@ -1,6 +1,6 @@
 package com.raven_cze.projt2.common.content.tiles;
 
-import com.raven_cze.projt2.client.gui.container.VoidChestMenu;
+import com.raven_cze.projt2.common.content.world.inventory.VoidChestMenu;
 import com.raven_cze.projt2.common.content.PT2Tiles;
 import com.raven_cze.projt2.common.content.blocks.BlockVoidInterface;
 import net.minecraft.client.resources.language.I18n;

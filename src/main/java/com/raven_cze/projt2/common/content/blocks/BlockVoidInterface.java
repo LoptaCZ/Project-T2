@@ -1,7 +1,7 @@
 package com.raven_cze.projt2.common.content.blocks;
 
 import com.raven_cze.projt2.common.content.PT2Sounds;
-import com.raven_cze.projt2.common.content.blocks.apparatus.BlockApparatusMetal;
+import com.raven_cze.projt2.common.content.blocks.apparatus.BlockApparatus;
 import com.raven_cze.projt2.common.content.tiles.TileVoidChest;
 import com.raven_cze.projt2.common.content.tiles.TileVoidInterface;
 import net.minecraft.core.BlockPos;
@@ -21,7 +21,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class BlockVoidInterface extends BlockApparatusMetal implements EntityBlock{
+public class BlockVoidInterface extends BlockApparatus implements EntityBlock{
     public static final IntegerProperty FREQUENCY=IntegerProperty.create("void_frequency",0,6);
     public BlockVoidInterface(Properties properties){super(properties);}
 

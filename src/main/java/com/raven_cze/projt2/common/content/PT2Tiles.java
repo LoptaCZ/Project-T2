@@ -30,6 +30,7 @@ public class PT2Tiles{
     public static final RegistryObject<BlockEntityType<TileVoidChest>>TILE_VOID_CHEST=register("void_chest",TileVoidChest::new,()->new Block[]{PT2Blocks.VOID_CHEST.get()});
     public static final RegistryObject<BlockEntityType<TileCrystalOre>>TILE_CRYSTAL=register("crystal_ore",TileCrystalOre::new,()->new Block[]{PT2Blocks.CRYSTAL_ORE_AIR.get(),PT2Blocks.CRYSTAL_ORE_VIS.get(),PT2Blocks.CRYSTAL_ORE_EARTH.get(),PT2Blocks.CRYSTAL_ORE_FIRE.get(),PT2Blocks.CRYSTAL_ORE_TAINT.get(),PT2Blocks.CRYSTAL_ORE_WATER.get()});
     public static final RegistryObject<BlockEntityType<TileSeal>>TILE_SEAL=register("seal",TileSeal::new,()->new Block[]{PT2Blocks.SEAL.get()});
+    public static final RegistryObject<BlockEntityType<TileGenerator>>TILE_GENERATOR=register("generator",TileGenerator::new,()->new Block[]{PT2Blocks.GENERATOR.get()});
 
     @SuppressWarnings("DataFlowIssue")
     private static<T extends BlockEntity>RegistryObject<BlockEntityType<T>>register(String name, BlockEntityType.BlockEntitySupplier<T>supplier,Supplier<Block[]>blocks){

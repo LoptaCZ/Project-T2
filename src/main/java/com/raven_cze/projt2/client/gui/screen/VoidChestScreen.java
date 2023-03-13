@@ -2,7 +2,7 @@ package com.raven_cze.projt2.client.gui.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.raven_cze.projt2.client.gui.container.VoidChestMenu;
+import com.raven_cze.projt2.common.content.world.inventory.VoidChestMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.MenuAccess;
 import net.minecraft.client.renderer.GameRenderer;

@@ -1,9 +1,7 @@
 package com.raven_cze.projt2.common.content.blocks;
 
-import com.raven_cze.projt2.common.content.PT2Blocks;
 import com.raven_cze.projt2.common.content.PT2Items;
 import com.raven_cze.projt2.common.content.tiles.TileCrystalOre;
-import com.raven_cze.projt2.common.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -32,12 +30,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@SuppressWarnings("ALL")
 public class BlockCrystalOre extends HalfTransparentBlock implements EntityBlock{
-
     public static final DirectionProperty DIRECTION=DirectionProperty.create("direction");
     private String type="vis";
-    private Direction orientation=Direction.UP;
-    public BlockCrystalOre(Properties properties) {
+    public BlockCrystalOre(Properties properties){
         super(properties);
         //  idk 2.5F
         //  idk 0.75F
@@ -47,7 +44,7 @@ public class BlockCrystalOre extends HalfTransparentBlock implements EntityBlock
         properties.randomTicks();// I Guess?!
         //  idk true
         //  idk 0.8F
-        registerDefaultState(getStateDefinition().any().setValue(DIRECTION,Direction.UP));
+        registerDefaultState(this.getStateDefinition().any());
     }
 
     public Block setType(String type){this.type=type;return this;}
@@ -66,67 +63,44 @@ public class BlockCrystalOre extends HalfTransparentBlock implements EntityBlock
     }
 
     @Override
-    protected void createBlockStateDefinition(StateDefinition.@NotNull Builder<Block,BlockState>pBuilder){
-        pBuilder.add(DIRECTION);
-    }
+    protected void createBlockStateDefinition(StateDefinition.@NotNull Builder<Block,BlockState>pBuilder){pBuilder.add(DIRECTION);}
 
     @Nullable
     @Override
     public BlockState getStateForPlacement(@NotNull BlockPlaceContext ctx){
-        Level lvl           =   ctx.getLevel();
-        BlockPos pos        =   ctx.getClickedPos().below();
-        Direction dir       =   ctx.getClickedFace();
-        BlockState block;
-        BlockPos offset=BlockPos.ZERO;
-        switch(dir){
-            default->offset=pos;
-            case NORTH->offset.south();
-            case EAST->offset.west();
-            case SOUTH->offset.north();
-            case WEST->offset.east();
-            case UP->offset.below();
-            case DOWN->offset.above(2);
-        }
-        block=lvl.getBlockState(offset);
-        if(Block.isFaceFull(this.getCollisionShape(block,lvl,pos,CollisionContext.of(lvl.players().get(lvl.players().size()-1))),dir)){
-            orientation=dir;
-        }else return null;
-        if( block.getBlock().equals(PT2Blocks.CRYSTAL_ORE_VIS.get()) || block.getBlock().equals(PT2Blocks.CRYSTAL_ORE_WATER.get()) ||
-                block.getBlock().equals(PT2Blocks.CRYSTAL_ORE_EARTH.get()) || block.getBlock().equals(PT2Blocks.CRYSTAL_ORE_FIRE.get()) ||
-        block.getBlock().equals(PT2Blocks.CRYSTAL_ORE_AIR.get()) || block.getBlock().equals(PT2Blocks.CRYSTAL_ORE_TAINT.get())
-        )return null;
-        BlockState state=this.defaultBlockState();
-        state.setValue(DIRECTION,dir);
-        return state;
+        if(ctx.getLevel().getBlockState(ctx.getClickedPos().below()).getBlock().getRegistryName().getPath().equals("arcane_seal"))return null;
+
+        return this.defaultBlockState().setValue(DIRECTION,ctx.getClickedFace());
     }
 
     VoxelShape CORE=Shapes.box(0.25F,0.25F,0.25F,0.75F,0.75F,0.75F);
-    VoxelShape NORTH=Shapes.box(0F,0F,0F,0F,0F,0F);
-    VoxelShape EAST=Shapes.box(0F,0F,0F,0F,0F,0F);
-    VoxelShape SOUTH=Shapes.box(0F,0F,0F,0F,0F,0F);
-    VoxelShape WEST=Shapes.box(0F,0F,0F,0F,0F,0F);
-    VoxelShape UP=Shapes.box(0F,0F,0F,0F,0F,0F);
-    VoxelShape DOWN=Shapes.box(0F,0F,0F,0F,0F,0F);
+    VoxelShape NORTH=Shapes.box(0.25F,0.25F,0.25F,0.75F,0.75F,0.75F);
+    VoxelShape EAST=Shapes.box(0.25F,0.25F,0.25F,0.75F,0.75F,0.75F);
+    VoxelShape SOUTH=Shapes.box(0.25F,0.25F,0.25F,0.75F,0.75F,0.75F);
+    VoxelShape WEST=Shapes.box(0.25F,0.25F,0.25F,0.75F,0.75F,0.75F);
+    VoxelShape UP=Shapes.box(0.25F,0F,0.25F,0.75F,0.5F,0.75F);
+    VoxelShape DOWN=Shapes.box(0.25F,0.5F,0.25F,0.75F,1F,0.75F);
 
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState state,@NotNull BlockGetter getter,@NotNull BlockPos pos,@NotNull CollisionContext context){
-        VoxelShape shape=Shapes.box(0.0F,0.0F,0.0F,1.0F,1.0F,1.0F);
+        VoxelShape shape=Shapes.block();
         if(getter.getBlockEntity(pos)instanceof TileCrystalOre){
-            float th = 0.25F;
-            switch(orientation){
-                case NORTH->shape=Utils.Voxel.combine(CORE,NORTH);
-                case EAST->shape=Utils.Voxel.combine(CORE,EAST);
-                case WEST->shape=Utils.Voxel.combine(CORE,SOUTH);
-                case SOUTH->shape=Utils.Voxel.combine(CORE,WEST);
-                case UP->shape=Utils.Voxel.combine(CORE,UP);
-                case DOWN->shape=Utils.Voxel.combine(CORE,DOWN);
+            switch(state.getValue(DIRECTION)){
+                case NORTH->shape=Shapes.or(CORE,Shapes.box(0.25F,0.25F,0.5F,0.75F,0.75F,1.0F));
+                case SOUTH->shape=Shapes.or(CORE,Shapes.box(0.25F,0.25F,0.0F,0.75F,0.75F,1.0F));
+
+                case EAST->shape=Shapes.or(CORE,Shapes.box(0.0F,0.25F,0.25F,0.5F,0.75F,0.75F));
+                case WEST->shape=Shapes.or(CORE,Shapes.box(0.0F,0.25F,0.25F,0.5F,0.75F,0.75F));
+
+                case UP->shape=Shapes.or(CORE,Shapes.box(0.25F,0.0F,0.25F,0.75F,0.5F,0.75F));
+                case DOWN->shape=Shapes.or(CORE,Shapes.box(0.25F,0.5F,0.25F,0.75F,1.0F,0.75F));
             }
         }
         return shape;
     }
 
     @Override
-    public@NotNull VoxelShape getCollisionShape(@NotNull BlockState state,@NotNull BlockGetter level,@NotNull BlockPos pos,@NotNull CollisionContext context){return getShape(state,level,pos,context);}
+    public@NotNull VoxelShape getCollisionShape(@NotNull BlockState state,@NotNull BlockGetter level,@NotNull BlockPos pos,@NotNull CollisionContext context){return CORE;}
 
     @Nullable
     @Override
@@ -134,7 +108,7 @@ public class BlockCrystalOre extends HalfTransparentBlock implements EntityBlock
         TileCrystalOre tco=new TileCrystalOre(pos,state);
         tco.crystals=2;
         tco.rune=type;
-        tco.orientation=orientation;
+        tco.orientation=this.defaultBlockState().getValue(DIRECTION);
         return tco;
     }
 

@@ -1,6 +1,6 @@
 package com.raven_cze.projt2.common.content.tiles;
 
-import com.raven_cze.projt2.client.gui.container.VoidChestMenu;
+import com.raven_cze.projt2.common.content.world.inventory.VoidChestMenu;
 import com.raven_cze.projt2.common.content.PT2Tiles;
 import io.netty.buffer.ByteBufAllocator;
 import io.netty.buffer.EmptyByteBuf;

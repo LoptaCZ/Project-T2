@@ -1,4 +1,4 @@
-package com.raven_cze.projt2.client.gui.container;
+package com.raven_cze.projt2.common.content.world.inventory;
 
 import com.raven_cze.projt2.common.content.PT2Blocks;
 import com.raven_cze.projt2.common.content.PT2Menus;

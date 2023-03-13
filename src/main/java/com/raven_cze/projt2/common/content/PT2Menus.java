@@ -1,10 +1,10 @@
 package com.raven_cze.projt2.common.content;
 
 import com.raven_cze.projt2.ProjectT2;
-import com.raven_cze.projt2.client.gui.container.ArcaneFurnaceMenu;
-import com.raven_cze.projt2.client.gui.container.CrystalBallMenu;
-import com.raven_cze.projt2.client.gui.container.DiscoveryTomeMenu;
-import com.raven_cze.projt2.client.gui.container.VoidChestMenu;
+import com.raven_cze.projt2.common.content.world.inventory.ArcaneFurnaceMenu;
+import com.raven_cze.projt2.common.content.world.inventory.CrystalBallMenu;
+import com.raven_cze.projt2.common.content.world.inventory.DiscoveryTomeMenu;
+import com.raven_cze.projt2.common.content.world.inventory.VoidChestMenu;
 import com.raven_cze.projt2.common.config.CommonCFG;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
