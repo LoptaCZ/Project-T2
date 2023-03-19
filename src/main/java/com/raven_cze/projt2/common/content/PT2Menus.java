@@ -1,10 +1,7 @@
 package com.raven_cze.projt2.common.content;
 
 import com.raven_cze.projt2.ProjectT2;
-import com.raven_cze.projt2.common.content.world.inventory.ArcaneFurnaceMenu;
-import com.raven_cze.projt2.common.content.world.inventory.CrystalBallMenu;
-import com.raven_cze.projt2.common.content.world.inventory.DiscoveryTomeMenu;
-import com.raven_cze.projt2.common.content.world.inventory.VoidChestMenu;
+import com.raven_cze.projt2.common.content.world.inventory.*;
 import com.raven_cze.projt2.common.config.CommonCFG;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
@@ -23,6 +20,7 @@ public class PT2Menus{
     public static final RegistryObject<MenuType<VoidChestMenu>>MENU_VOID_CHEST_NI=register(VoidChestMenu::createNoInterface,"void_chest_ni");
     public static final RegistryObject<MenuType<ArcaneFurnaceMenu>>MENU_FURNACE=register(ArcaneFurnaceMenu::new,"furnace");
     public static final RegistryObject<MenuType<CrystalBallMenu>>MENU_CRYSTALBALL=register(CrystalBallMenu::new,"crystal_ball");
+    public static final RegistryObject<MenuType<GeneratorMenu>>MENU_GENERATOR=register(GeneratorMenu::new,"generator");
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>>register(IContainerFactory<T> factory, String name){
         return REGISTRY.register(name,()-> IForgeMenuType.create(factory));

@@ -3,6 +3,7 @@ package com.raven_cze.projt2;
 import com.raven_cze.projt2.client.ClientHandler;
 import com.raven_cze.projt2.client.TickHandler;
 import com.raven_cze.projt2.client.gui.screen.DiscoveryTomeScreen;
+import com.raven_cze.projt2.client.gui.screen.GeneratorScreen;
 import com.raven_cze.projt2.client.gui.screen.VoidChestScreen;
 import com.raven_cze.projt2.common.PT2SaveData;
 import com.raven_cze.projt2.common.config.ClientCFG;
@@ -81,6 +82,7 @@ public class ProjectT2{
 		event.enqueueWork(()->{
 			MenuScreens.register(PT2Menus.MENU_DISCOVERY_TOME.get(),DiscoveryTomeScreen::new);
 			MenuScreens.register(PT2Menus.MENU_VOID_CHEST.get(),VoidChestScreen::new);
+			MenuScreens.register(PT2Menus.MENU_GENERATOR.get(),GeneratorScreen::new);
 		});
 		IEventBus bus=MinecraftForge.EVENT_BUS;
 		bus.addListener((TickEvent.ClientTickEvent e)->{

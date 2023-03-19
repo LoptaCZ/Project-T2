@@ -3,6 +3,7 @@ package com.raven_cze.projt2.client;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.raven_cze.projt2.ProjectT2;
 import com.raven_cze.projt2.client.model.ModelCrystal;
+import com.raven_cze.projt2.client.model.ModelGenCore;
 import com.raven_cze.projt2.client.overlay.VisDetector;
 import com.raven_cze.projt2.client.renderer.*;
 import com.raven_cze.projt2.common.config.ClientCFG;
@@ -60,13 +61,14 @@ public class ClientHandler{
 	public static void registerTELayers(BiConsumer<ModelLayerLocation,Supplier<LayerDefinition>>consumer){
 		consumer.accept( VoidKeyholeRenderer.CRYSTAL,()->LayerDefinition.create(ModelCrystal.createMesh(),64,32) );
 		consumer.accept( CrystalOreRenderer.CRYSTAL,()->LayerDefinition.create(ModelCrystal.createMesh(),64,32) );
+		consumer.accept( GeneratorRenderer.CORE,()->LayerDefinition.create(ModelGenCore.createMesh(),64,32) );
 	}
 	
 	@SubscribeEvent
 	public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event){
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_CRYSTAL.get(),CrystalOreRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_HOLE.get(),HoleRenderer::new);
-		event.registerBlockEntityRenderer(PT2Tiles.TILE_NITOR.get(),NitorRenderer::new);
+		//event.registerBlockEntityRenderer(PT2Tiles.TILE_NITOR.get(),NitorRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_VOID_CUBE.get(),VoidCubeRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_VOID_KEYHOLE.get(),VoidKeyholeRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_VOID_LOCK.get(),VoidLockRenderer::new);
@@ -74,12 +76,13 @@ public class ClientHandler{
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_VOID_INTERFACE.get(),VoidInterfaceRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_CONDUIT.get(),ConduitRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_SEAL.get(),SealRenderer::new);
+		event.registerBlockEntityRenderer(PT2Tiles.TILE_GENERATOR.get(),GeneratorRenderer::new);
 	}
 
 	@SubscribeEvent
 	public void registerBlockColors(ColorHandlerEvent.Block event){
 		BlockColor leavesColor=(state,world,pos,tint)->(world!=null && pos!=null)? BiomeColors.getAverageFoliageColor(world,pos): FoliageColor.getDefaultColor();
-		event.getBlockColors().register(leavesColor, PT2Blocks.GREATWOOD_LEAVES.get(),PT2Blocks.SILVERWOOD_LEAVES.get(),PT2Blocks.TAINT_LEAVES.get());
+		event.getBlockColors().register(leavesColor,PT2Blocks.GREATWOOD_LEAVES.get(),PT2Blocks.SILVERWOOD_LEAVES.get(),PT2Blocks.TAINT_LEAVES.get());
 	}
 
 	private static void registerOverlays(){

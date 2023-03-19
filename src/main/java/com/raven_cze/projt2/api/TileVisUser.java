@@ -109,4 +109,12 @@ public abstract class TileVisUser extends BlockEntity implements IConnection{
 
     @Override
     public void setSuction(int suctionAmount){this.visSuction=suctionAmount;this.taintSuction=suctionAmount;}
+
+    protected boolean gettingPower(){
+        if(this.level!=null)
+            for(Direction dir:Direction.values()){
+                return(this.getBlockState().getSignal(this.level,this.worldPosition,dir)>0);
+            }
+        return false;
+    }
 }

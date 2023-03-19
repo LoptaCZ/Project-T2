@@ -1,10 +1,12 @@
 package com.raven_cze.projt2.common.content.blocks;
 
 import com.raven_cze.projt2.common.content.PT2Items;
+import com.raven_cze.projt2.common.content.PT2Particles;
 import com.raven_cze.projt2.common.content.tiles.TileCrystalOre;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -59,7 +61,7 @@ public class BlockCrystalOre extends HalfTransparentBlock implements EntityBlock
         int y=pos.getY();
         int z=pos.getZ();
 
-        level.addParticle(ParticleTypes.END_ROD,(x+level.random.nextFloat()),(y+level.random.nextFloat()),(z+level.random.nextFloat()),0,0,0);
+        level.addParticle(PT2Particles.FX_WISP.get(),(x+level.random.nextFloat()),(y+level.random.nextFloat()),(z+level.random.nextFloat()),0,0,0);
     }
 
     @Override
@@ -83,14 +85,14 @@ public class BlockCrystalOre extends HalfTransparentBlock implements EntityBlock
 
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState state,@NotNull BlockGetter getter,@NotNull BlockPos pos,@NotNull CollisionContext context){
-        VoxelShape shape=Shapes.block();
+        VoxelShape shape=Shapes.box(0.25F,0.25F,0.25F,0.25F,0.25F,0.25F);
         if(getter.getBlockEntity(pos)instanceof TileCrystalOre){
             switch(state.getValue(DIRECTION)){
                 case NORTH->shape=Shapes.or(CORE,Shapes.box(0.25F,0.25F,0.5F,0.75F,0.75F,1.0F));
                 case SOUTH->shape=Shapes.or(CORE,Shapes.box(0.25F,0.25F,0.0F,0.75F,0.75F,1.0F));
 
                 case EAST->shape=Shapes.or(CORE,Shapes.box(0.0F,0.25F,0.25F,0.5F,0.75F,0.75F));
-                case WEST->shape=Shapes.or(CORE,Shapes.box(0.0F,0.25F,0.25F,0.5F,0.75F,0.75F));
+                case WEST->shape=Shapes.or(CORE,Shapes.box(0.5F,0.25F,0.25F,1.0F,0.75F,0.75F));
 
                 case UP->shape=Shapes.or(CORE,Shapes.box(0.25F,0.0F,0.25F,0.75F,0.5F,0.75F));
                 case DOWN->shape=Shapes.or(CORE,Shapes.box(0.25F,0.5F,0.25F,0.75F,1.0F,0.75F));
@@ -108,7 +110,7 @@ public class BlockCrystalOre extends HalfTransparentBlock implements EntityBlock
         TileCrystalOre tco=new TileCrystalOre(pos,state);
         tco.crystals=2;
         tco.rune=type;
-        tco.orientation=this.defaultBlockState().getValue(DIRECTION);
+        tco.orientation=state.getValue(DIRECTION);
         return tco;
     }
 

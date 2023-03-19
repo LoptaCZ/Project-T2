@@ -25,7 +25,7 @@ import java.util.Random;
 public class CrystalOreRenderer implements BlockEntityRenderer<TileCrystalOre>{
     private final ModelCrystal model;
     public static final ModelLayerLocation CRYSTAL=new ModelLayerLocation(new ResourceLocation("projt2","crystal"),"main");
-    private float shade;
+    private float shade=1.0F;
 
     public CrystalOreRenderer(BlockEntityRendererProvider.Context ignoredContext){
         this.model=new ModelCrystal(ignoredContext.bakeLayer(CRYSTAL));
@@ -34,23 +34,18 @@ public class CrystalOreRenderer implements BlockEntityRenderer<TileCrystalOre>{
     @Override
     public void render(@NotNull TileCrystalOre tco,float ticks,@NotNull PoseStack pose,@NotNull MultiBufferSource buffer,int light,int overlay){
         Matrix4f matrix=pose.last().pose();
-        ResourceLocation texture;
-
+        ResourceLocation texture= new ResourceLocation("projt2","textures/models/crystal.png");
         switch(tco.rune){
-            default->{
-                texture = new ResourceLocation("projt2","textures/models/crystal.png");
-                shade=1.0F;
-            }
-            case"water"->texture=new ResourceLocation("projt2","textures/models/crystalb.png");
-            case"earth"->texture=new ResourceLocation("projt2","textures/models/crystalg.png");
-            case"fire"->texture=new ResourceLocation("projt2","textures/models/crystalr.png");
-            case"air"->texture=new ResourceLocation("projt2","textures/models/crystaly.png");
+            case"vis"->{texture = new ResourceLocation("projt2","textures/models/crystal.png");shade=1.0F;}
+            case"water"->{texture=new ResourceLocation("projt2","textures/models/crystalb.png");shade=1.0F;}
+            case"earth"->{texture=new ResourceLocation("projt2","textures/models/crystalg.png");shade=1.0F;}
+            case"fire"->{texture=new ResourceLocation("projt2","textures/models/crystalr.png");shade=1.0F;}
+            case"air"->{texture=new ResourceLocation("projt2","textures/models/crystaly.png");shade=1.0F;}
             case"taint"->{
                 texture=new ResourceLocation("projt2","textures/models/crystal.png");
                 shade=0.2F;
             }
-            case"notch"->texture=new ResourceLocation("minecraft","textures/block/lava_still.png");
-
+            case"notch"->{texture=new ResourceLocation("minecraft","textures/block/lava_still.png");shade=1.0F;}
         }
         RenderType layer=RenderType.entityTranslucent(texture);
 
@@ -65,28 +60,31 @@ public class CrystalOreRenderer implements BlockEntityRenderer<TileCrystalOre>{
     }
 
     private void translateFromDir(BlockPos pos,Direction dir,PoseStack pose){
-        int x= pos.getX();
-        int y= pos.getY();
-        int z= pos.getZ();
-
-        if(dir.equals(Direction.NORTH)){
-            pose.translate(0.5F,0.5F,1.3F);
-            pose.mulPose(Vector3f.XP.rotationDegrees(90.0F));
-        }else if(dir.equals(Direction.EAST)){
-            pose.translate(-0.3F,0.5F,0.5F);
-            pose.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
-        }else if(dir.equals(Direction.SOUTH)){
-            pose.translate(0.5F,0.5F,-0.3F);
-            pose.mulPose(Vector3f.XP.rotationDegrees(-90.0F));
-        }else if(dir.equals(Direction.WEST)){
-            pose.translate(1.3F,0.5F,0.5F);
-            pose.mulPose(Vector3f.ZP.rotationDegrees(-90.0F));
-        }else if(dir.equals(Direction.UP)){
-            pose.translate(0.5F,-0.3F,0.5F);
-            pose.mulPose(Vector3f.ZP.rotationDegrees(180.0F));
-        }else if(dir.equals(Direction.DOWN)){
-            pose.translate(0.5F,1.3F,0.5F);
-            //pose.mulPose(Vector3f.ZP.rotationDegrees(0.0F));
+        switch(dir){
+            case NORTH->{
+                pose.translate(0.5F,0.5F,1.3F);
+                pose.mulPose(Vector3f.XP.rotationDegrees(90.0F));
+            }
+            case EAST->{
+                pose.translate(-0.3F,0.5F,0.5F);
+                pose.mulPose(Vector3f.ZP.rotationDegrees(90.0F));
+            }
+            case SOUTH->{
+                pose.translate(0.5F,0.5F,-0.3F);
+                pose.mulPose(Vector3f.XP.rotationDegrees(-90.0F));
+            }
+            case WEST->{
+                pose.translate(1.3F,0.5F,0.5F);
+                pose.mulPose(Vector3f.ZP.rotationDegrees(-90.0F));
+            }
+            case UP->{
+                pose.translate(0.5F,-0.3F,0.5F);
+                pose.mulPose(Vector3f.ZP.rotationDegrees(180.0F));
+            }
+            case DOWN->{
+                pose.translate(0.5F,1.3F,0.5F);
+                pose.mulPose(Vector3f.ZP.rotationDegrees(0.0F));
+            }
         }
     }
 
@@ -99,11 +97,6 @@ public class CrystalOreRenderer implements BlockEntityRenderer<TileCrystalOre>{
             pose.pushPose();
             translateFromDir(pos,dir,pose);
             pose.pushPose();
-            //  TODO Setting Angle of crystals
-            //  |   0.0F    =   180°    |
-            //  |   0.5F    =   157,5°  |
-            //  |   1.0F    =   135°    |
-            //  |   1.5F    =   90°     |
             pose.mulPose(Vector3f.XP.rotation( Mth.clamp(Ang1,-0.5F,0.5F) ));
             pose.mulPose(Vector3f.ZP.rotation( Mth.clamp(Ang2,-0.5F,0.5F) ));
             pose.pushPose();
