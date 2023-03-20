@@ -1,0 +1,6 @@
+{
+	"variants": {
+		"active=false":{"model":"projt2:block/generator_off"},
+		"active=true":{"model":"projt2:block/generator_on"}
+	}
+}

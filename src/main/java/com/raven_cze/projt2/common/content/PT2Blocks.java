@@ -5,7 +5,8 @@ import com.raven_cze.projt2.common.config.CommonCFG;
 import com.raven_cze.projt2.common.content.blocks.*;
 import com.raven_cze.projt2.common.content.blocks.apparatus.BlockApparatusMetal;
 import com.raven_cze.projt2.common.content.blocks.apparatus.BlockApparatusStone;
-import com.raven_cze.projt2.common.content.blocks.references.FlammableRotatedPillarBlock;
+import com.raven_cze.projt2.common.content.blocks.references.BlockCustomWood;
+import com.raven_cze.projt2.common.content.blocks.references.PT2Leaves;
 import com.raven_cze.projt2.common.content.blocks.references.PT2SaplingBlock;
 import com.raven_cze.projt2.common.content.world.feature.tree.GreatwoodGrower;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -17,7 +18,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -25,7 +25,9 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -67,19 +69,19 @@ public class PT2Blocks{
     public static RegistryObject<Block>CRYSTAL_ORE_AIR=register("crystal_ore_air",()->new BlockCrystalOre(FRAGILE.lightLevel((light)->5).noOcclusion().isViewBlocking(PT2Blocks::no)).setType("air"));
     public static RegistryObject<Block>CINNABAR=register("cinnabar_ore",()->new Block(STONE));
     public static RegistryObject<Block>GLOW_TAINTWEED=register("taintweed_glow",()->new Block(PLANT));
-    public static RegistryObject<Block>GREATWOOD_LEAVES=register("greatwood_leaves",()->new LeavesBlock(LEAVES.color(MaterialColor.COLOR_GREEN)));
-    public static RegistryObject<Block>GREATWOOD_LOG=register("greatwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
-    public static RegistryObject<Block>STRIPPED_GREATWOOD_LOG=register("stripped_greatwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
+    public static RegistryObject<Block>GREATWOOD_LEAVES=register("greatwood_leaves",()->new PT2Leaves(LEAVES.color(MaterialColor.COLOR_GREEN)));
+    public static RegistryObject<Block>GREATWOOD_LOG=register("greatwood_log",()->new BlockCustomWood(WOOD_LOG));
+    public static RegistryObject<Block>STRIPPED_GREATWOOD_LOG=register("stripped_greatwood_log",()->new BlockCustomWood(WOOD_LOG_STRIPPED));
     public static RegistryObject<Block>GREATWOOD_SAPLING=register("greatwood_sapling",()->new PT2SaplingBlock(new GreatwoodGrower(),PLANT));
     public static RegistryObject<Block>NITOR=register("nitor",()->new BlockNitor(PROPERTIES.noCollission()));
-    public static RegistryObject<Block>PETRIFIED_LOG=register("petrified_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
-    public static RegistryObject<Block>STRIPPED_PETRIFIED_LOG=register("stripped_petrified_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
-    public static RegistryObject<Block>SILVERWOOD_LEAVES=register("silverwood_leaves",()->new LeavesBlock(LEAVES.color(MaterialColor.COLOR_GREEN)));
-    public static RegistryObject<Block>SILVERWOOD_LOG=register("silverwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
-    public static RegistryObject<Block>STRIPPED_SILVERWOOD_LOG=register("stripped_silverwood_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
-    public static RegistryObject<Block>TAINT_LEAVES=register("taint_leaves",()->new LeavesBlock(LEAVES.color(MaterialColor.COLOR_PURPLE)));
-    public static RegistryObject<Block>TAINT_LOG=register("taint_log",()->new FlammableRotatedPillarBlock(WOOD_LOG));
-    public static RegistryObject<Block>STRIPPED_TAINT_LOG=register("stripped_taint_log",()->new FlammableRotatedPillarBlock(WOOD_LOG_STRIPPED));
+    public static RegistryObject<Block>PETRIFIED_LOG=register("petrified_log",()->new BlockCustomWood(WOOD_LOG));
+    public static RegistryObject<Block>STRIPPED_PETRIFIED_LOG=register("stripped_petrified_log",()->new BlockCustomWood(WOOD_LOG_STRIPPED));
+    public static RegistryObject<Block>SILVERWOOD_LEAVES=register("silverwood_leaves",()->new PT2Leaves(LEAVES.color(MaterialColor.COLOR_GREEN)));
+    public static RegistryObject<Block>SILVERWOOD_LOG=register("silverwood_log",()->new BlockCustomWood(WOOD_LOG));
+    public static RegistryObject<Block>STRIPPED_SILVERWOOD_LOG=register("stripped_silverwood_log",()->new BlockCustomWood(WOOD_LOG_STRIPPED));
+    public static RegistryObject<Block>TAINT_LEAVES=register("taint_leaves",()->new PT2Leaves(LEAVES.color(MaterialColor.COLOR_PURPLE)));
+    public static RegistryObject<Block>TAINT_LOG=register("taint_log",()->new BlockCustomWood(WOOD_LOG));
+    public static RegistryObject<Block>STRIPPED_TAINT_LOG=register("stripped_taint_log",()->new BlockCustomWood(WOOD_LOG_STRIPPED));
     public static RegistryObject<Block>CRUCIBLE_BASIC=register("crucible_basic",()->new BlockApparatusMetal(METAL));
     public static RegistryObject<Block>CRUCIBLE_EYES=register("crucible_eyes",()->new BlockApparatusMetal(METAL));
     public static RegistryObject<Block>CRUCIBLE_SOULS=register("crucible_souls",()->new BlockApparatusMetal(METAL));
@@ -111,6 +113,10 @@ public class PT2Blocks{
         if(CommonCFG.debugMode.get())ProjectT2.LOGGER.debug(ProjectT2.MARKERS.REGISTRY,"Registering BLOCKs");
         REGISTRY.register(eventBus);
     }
+    @SubscribeEvent
+    public static void blockColorLoad(ColorHandlerEvent.Block event){PT2Leaves.blockColorLoad(event);}
+    @SubscribeEvent
+    public static void itemColorLoad(ColorHandlerEvent.Item event){PT2Leaves.itemColorLoad(event);}
     @OnlyIn(Dist.CLIENT)
     public static void prepareSpecialRender(){
         Collection<RegistryObject<Block>>blocks=REGISTRY.getEntries();

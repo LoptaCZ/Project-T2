@@ -21,13 +21,12 @@ public class GeneratorMenu extends AbstractContainerMenu implements Supplier<Map
     public final Level level;
     public final Player ent;
     public int x,y,z;
-    private final IItemHandler internal;
-    private final Map<Integer,Slot>customSlots=new HashMap<>();
+    private final Map<Integer,Slot>customSlots=new HashMap<>(2);
     public GeneratorMenu(int ID, Inventory inv, FriendlyByteBuf extra) {
         super(PT2Menus.MENU_GENERATOR.get(),ID);
         this.ent=inv.player;
         this.level=inv.player.level;
-        this.internal=new ItemStackHandler(0);
+        IItemHandler internal = new ItemStackHandler(2);
         BlockPos pos=null;
         if(extra!=null){
             pos=extra.readBlockPos();
@@ -37,6 +36,9 @@ public class GeneratorMenu extends AbstractContainerMenu implements Supplier<Map
         }
         if(pos!=null){
             //Do Nothing
+            for(int slot = 0; slot< internal.getSlots(); slot++){
+                customSlots.put(slot,new Slot(inv,slot,0,(slot*10)));
+            }
         }
     }
 

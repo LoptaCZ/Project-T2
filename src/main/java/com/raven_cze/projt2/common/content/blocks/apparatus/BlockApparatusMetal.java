@@ -2,6 +2,7 @@ package com.raven_cze.projt2.common.content.blocks.apparatus;
 
 import com.raven_cze.projt2.common.content.tiles.TileArcaneFurnace;
 import com.raven_cze.projt2.common.content.tiles.TileCrucible;
+import com.raven_cze.projt2.common.content.tiles.TileGenerator;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
@@ -59,13 +60,9 @@ public class BlockApparatusMetal extends BlockApparatus implements EntityBlock{
 					tile=new TileCrucible(pos,state);
 					((TileCrucible)tile).setTier((short)3);
 				}
-				case"furnace"->{
-					tile=new TileArcaneFurnace(pos,state);
-
-				}
-				case"generator"->{
-					tile=null;
-				}/*
+				case"furnace"->tile=new TileArcaneFurnace(pos,state);
+				case"generator"->tile=new TileGenerator(pos,state);
+				/*
 				case"crystalizer"->{}
 				case"bore"->{}
 				case"void_chest"->{}

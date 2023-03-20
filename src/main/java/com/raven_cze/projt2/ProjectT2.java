@@ -92,7 +92,6 @@ public class ProjectT2{
 		bus.addListener( (TickEvent.RenderTickEvent e)->{
 			if(e.phase==TickEvent.Phase.START)TickHandler.renderTick(e.renderTickTime);
 		} );
-		//TODO PT2Tiles.prepareSpecialRender()
 		bus.addListener((e)->PT2Blocks.prepareSpecialRender());
 	}
 	private void setup(final FMLCommonSetupEvent event){

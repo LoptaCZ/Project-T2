@@ -12,9 +12,9 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolAction;
 
-public class FlammableRotatedPillarBlock extends RotatedPillarBlock {
+public class BlockCustomWood extends RotatedPillarBlock {
 
-	public FlammableRotatedPillarBlock(Properties properties){super(properties);}
+	public BlockCustomWood(Properties properties){super(properties);}
 	
 	@Override
 	public boolean isFlammable(BlockState state,BlockGetter level,BlockPos pos,Direction direction){return true;}

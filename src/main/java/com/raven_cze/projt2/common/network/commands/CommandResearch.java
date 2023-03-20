@@ -2,29 +2,30 @@ package com.raven_cze.projt2.common.network.commands;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.commands.arguments.ComponentArgument;
 import net.minecraft.commands.arguments.item.ItemArgument;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 
-import java.util.function.Predicate;
-
+@SuppressWarnings({"all"})
 public class CommandResearch{
     public static LiteralArgumentBuilder<CommandSourceStack>create(){
         LiteralArgumentBuilder<CommandSourceStack>main=Commands.literal("research");
         main.requires(source->source.hasPermission(4));
         //main.then( Commands.argument("player",EntityArgument.player()).executes(context->clear(context,context.getArgument("player",ServerPlayer.class))) );
         main.then(add());
+        /*
         main.then(remove());
         main.then(gain());
         main.then(clear());
         main.then(check());
+        */
         return main;
     }
 
@@ -40,10 +41,10 @@ public class CommandResearch{
     private static LiteralArgumentBuilder<CommandSourceStack>add(){
         LiteralArgumentBuilder<CommandSourceStack>set=Commands.literal("add");
         set.requires(source->source.hasPermission(source.getServer().getOperatorUserPermissionLevel()))
-                .then( Commands.argument("research_name",ComponentArgument.textComponent()) )
+                .then( Commands.argument("research_name",StringArgumentType.string()) )
                 .then( Commands.argument("category",IntegerArgumentType.integer(0,4)) )
                 .then( Commands.argument("difficulty",IntegerArgumentType.integer(0,6)) )
-                .then( Commands.argument("prev_research",ComponentArgument.textComponent()) )
+                .then( Commands.argument("prev_research",StringArgumentType.string()) )
                 .then( Commands.argument("thing",ItemArgument.item()) )
                 .executes(ctx->{
                     Object thing=ctx.getArgument("thing",Object.class);

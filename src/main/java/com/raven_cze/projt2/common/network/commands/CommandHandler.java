@@ -18,7 +18,8 @@ public class CommandHandler{
 
     public static void addCMDs(CommandDispatcher<CommandSourceStack>dispatcher,LiteralArgumentBuilder<CommandSourceStack>main){
         main.then(CommandResearch.create())
-                .then(CommandResearch.create());
+                //.then(CommandResearch.create())
+        ;
         dispatcher.register(main);
     }
 }

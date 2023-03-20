@@ -18,20 +18,20 @@ public class ModelGenCore extends Model{
     private final ModelPart large;
     public ModelGenCore(ModelPart root){
         super(RenderType::entityTranslucent);
-        this.small=root.getChild("Cores").getChild("SmallCore");
-        this.middle=root.getChild("Cores").getChild("MediumCore");
-        this.large=root.getChild("Cores").getChild("LargeCore");
+        this.small=root.getChild("SmallCore");
+        this.middle=root.getChild("MediumCore");
+        this.large=root.getChild("LargeCore");
     }
 
     public static MeshDefinition createMesh(){
         MeshDefinition mesh=new MeshDefinition();
-        PartDefinition root=mesh.getRoot().getChild("Cores");
-        root.addOrReplaceChild("SmallCore",CubeListBuilder.create().addBox(-4,-4,-4,8,16,16, CubeDeformation.NONE), PartPose.ZERO);
-        root.addOrReplaceChild("MediumCore",CubeListBuilder.create().addBox(-16,-16,0,16,16,16, CubeDeformation.NONE), PartPose.ZERO);
-        root.addOrReplaceChild("LargeCore",CubeListBuilder.create().addBox(-16,-16,0,16,16,16, CubeDeformation.NONE), PartPose.ZERO);
-        root.getChild("Cores").getChild("SmallCore").bake(64,32);
-        root.getChild("Cores").getChild("MediumCore").bake(64,32);
-        root.getChild("Cores").getChild("LargeCore").bake(64,32);
+        PartDefinition root=mesh.getRoot();
+        root.addOrReplaceChild("SmallCore",CubeListBuilder.create().addBox(-4,-4,-4,8,16,16,CubeDeformation.NONE),PartPose.ZERO);
+        root.addOrReplaceChild("MediumCore",CubeListBuilder.create().addBox(-16,-16,0,16,16,16,CubeDeformation.NONE),PartPose.ZERO);
+        root.addOrReplaceChild("LargeCore",CubeListBuilder.create().addBox(-16,-16,0,16,16,16,CubeDeformation.NONE),PartPose.ZERO);
+        root.getChild("SmallCore").bake(64,32);
+        root.getChild("MediumCore").bake(64,32);
+        root.getChild("LargeCore").bake(64,32);
         return mesh;
     }
     @Override
