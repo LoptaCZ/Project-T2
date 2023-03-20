@@ -1,7 +1,6 @@
 package com.raven_cze.projt2.common.content.blocks;
 
 import com.raven_cze.projt2.common.content.PT2Sounds;
-import com.raven_cze.projt2.common.content.blocks.apparatus.BlockApparatus;
 import com.raven_cze.projt2.common.content.tiles.TileVoidChest;
 import com.raven_cze.projt2.common.content.tiles.TileVoidInterface;
 import net.minecraft.core.BlockPos;

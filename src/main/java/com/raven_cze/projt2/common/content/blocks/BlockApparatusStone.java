@@ -1,6 +1,5 @@
-package com.raven_cze.projt2.common.content.blocks.apparatus;
+package com.raven_cze.projt2.common.content.blocks;
 
-import com.raven_cze.projt2.ProjectT2;
 import com.raven_cze.projt2.common.content.PT2Sounds;
 import com.raven_cze.projt2.common.content.tiles.*;
 import net.minecraft.core.BlockPos;
@@ -28,8 +27,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Optional;
 
 @SuppressWarnings("deprecation")
 public class BlockApparatusStone extends BlockApparatus implements EntityBlock{

@@ -2,11 +2,10 @@ package com.raven_cze.projt2.common.content.blocks;
 
 import com.raven_cze.projt2.common.content.PT2Items;
 import com.raven_cze.projt2.common.content.PT2Particles;
+import com.raven_cze.projt2.common.content.particles.FXWisp;
 import com.raven_cze.projt2.common.content.tiles.TileCrystalOre;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -51,6 +50,20 @@ public class BlockCrystalOre extends HalfTransparentBlock implements EntityBlock
 
     public Block setType(String type){this.type=type;return this;}
 
+    private int typeAsInt(String type){
+        int returner =-1;
+        switch(type){
+            default->returner=7;
+            case "vis"->returner=0;
+            case "air"->returner=1;
+            case "water"->returner=2;
+            case "earth"->returner=3;
+            case "fire"->returner=4;
+            case "taint"->returner=5;
+        }
+        return returner;
+    }
+
     @OnlyIn(Dist.CLIENT)
     @Override
     public void animateTick(@NotNull BlockState state,@NotNull Level level,@NotNull BlockPos pos,@NotNull Random random){
@@ -61,7 +74,9 @@ public class BlockCrystalOre extends HalfTransparentBlock implements EntityBlock
         int y=pos.getY();
         int z=pos.getZ();
 
-        level.addParticle(PT2Particles.FX_WISP.get(),(x+level.random.nextFloat()),(y+level.random.nextFloat()),(z+level.random.nextFloat()),0,0,0);
+        ParticleOptions WISP=PT2Particles.FX_WISP.get();
+        ((FXWisp)WISP).setType(typeAsInt(this.type));
+        level.addParticle(WISP,(x+level.random.nextFloat()),(y+level.random.nextFloat()),(z+level.random.nextFloat()),0,0,0);
     }
 
     @Override

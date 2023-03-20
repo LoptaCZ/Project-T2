@@ -2,9 +2,14 @@ package com.raven_cze.projt2.common.content;
 
 import com.raven_cze.projt2.ProjectT2;
 import com.raven_cze.projt2.common.config.CommonCFG;
+import com.raven_cze.projt2.common.content.particles.FXWisp;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;

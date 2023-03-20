@@ -1,6 +1,5 @@
 package com.raven_cze.projt2.common.content.blocks;
 
-import com.raven_cze.projt2.common.content.blocks.apparatus.BlockApparatusMetal;
 import com.raven_cze.projt2.common.content.tiles.TileVoidChest;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.EntityBlock;

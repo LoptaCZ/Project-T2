@@ -23,9 +23,9 @@ version="${file.jarVersion}" #mandatory
  # A display name for the mod
 displayName="Project T2" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
-updateJSONURL="https://raw.githubusercontent.com/LoptaCZ/Project-T2/master/update.json" #optional
+updateJSONURL="https://raw.githubusercontent.com/LoptaCZ/Project-T2/main/update.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
-displayURL="https://github.com/LoptaCZ/Project-T2/blob/master/readme.md" #optional
+displayURL="https://github.com/LoptaCZ/Project-T2/blob/main/README.md" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="projt2.png" #optional
 # A text field displayed in the mod UI

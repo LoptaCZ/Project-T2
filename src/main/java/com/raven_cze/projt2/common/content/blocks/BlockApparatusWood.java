@@ -1,9 +1,8 @@
-package com.raven_cze.projt2.common.content.blocks.apparatus;
+package com.raven_cze.projt2.common.content.blocks;
 
 import com.raven_cze.projt2.common.content.tiles.TileCondenser;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;

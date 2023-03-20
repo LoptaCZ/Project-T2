@@ -4,7 +4,7 @@ import com.raven_cze.projt2.ProjectT2;
 import com.raven_cze.projt2.api.ITickableBlockEntity;
 import com.raven_cze.projt2.common.content.PT2Sounds;
 import com.raven_cze.projt2.common.content.PT2Tiles;
-import com.raven_cze.projt2.common.content.blocks.apparatus.BlockApparatusStone;
+import com.raven_cze.projt2.common.content.blocks.BlockApparatusStone;
 import com.raven_cze.projt2.common.content.entities.TravelingTrunk;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

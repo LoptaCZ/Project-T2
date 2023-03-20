@@ -2,7 +2,6 @@ package com.raven_cze.projt2.common.content.blocks;
 
 import com.raven_cze.projt2.api.IConnection;
 import com.raven_cze.projt2.common.content.PT2Blocks;
-import com.raven_cze.projt2.common.content.blocks.apparatus.BlockApparatusFragile;
 import com.raven_cze.projt2.common.content.tiles.TileConduit;
 import com.raven_cze.projt2.common.util.Utils;
 import net.minecraft.core.BlockPos;

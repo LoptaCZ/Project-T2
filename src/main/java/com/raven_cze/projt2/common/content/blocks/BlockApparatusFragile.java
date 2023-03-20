@@ -1,4 +1,4 @@
-package com.raven_cze.projt2.common.content.blocks.apparatus;
+package com.raven_cze.projt2.common.content.blocks;
 
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
