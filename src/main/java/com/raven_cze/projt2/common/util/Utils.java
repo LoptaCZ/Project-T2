@@ -1,6 +1,6 @@
 package com.raven_cze.projt2.common.util;
 
-import com.raven_cze.projt2.common.config.ClientCFG;
+import com.raven_cze.projt2.common.PT2Config;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -14,8 +14,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-
-import java.util.List;
 
 @SuppressWarnings({"unused"})
 public class Utils {
@@ -33,7 +31,7 @@ public class Utils {
 		double vT=(fov+mc.options.fov/2.0F);
 		int j=64<<3-mc.options.renderDistance;
 		if(j>400)j=400;
-		double rD=ClientCFG.lowFX.get()?(double)(j/2):j;
+		double rD=PT2Config.CLIENT.lowFX.get()?(double)(j/2):j;
 		float f1=0;//gk.b(-ent.u*0.01745329F-3.141593F)
 		float f3=0;
 		float f5=0;

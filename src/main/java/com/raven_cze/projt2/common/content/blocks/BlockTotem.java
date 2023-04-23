@@ -14,9 +14,9 @@ public class BlockTotem extends BlockApparatusWood implements EntityBlock{
 		super(properties);
 		isBad=false;
 	}
-	public BlockTotem(Properties properties,boolean isBad){
+	public BlockTotem(Properties properties,boolean bad){
 		super(properties);
-		isBad=isBad;
+		isBad=bad;
 	}
 	@Override
 	public BlockEntity newBlockEntity(@NotNull BlockPos pos,@NotNull BlockState state){

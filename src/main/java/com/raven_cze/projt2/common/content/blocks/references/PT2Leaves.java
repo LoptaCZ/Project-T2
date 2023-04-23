@@ -21,10 +21,14 @@ public class PT2Leaves extends LeavesBlock{
 
     @OnlyIn(Dist.CLIENT)
     public static void blockColorLoad(ColorHandlerEvent.Block event){
-        event.getBlockColors().register((state,world,pos,index)->( world!=null && pos!=null )? BiomeColors.getAverageFoliageColor(world,pos): FoliageColor.getDefaultColor(),PT2Blocks.GREATWOOD_LEAVES.get(),PT2Blocks.SILVERWOOD_LEAVES.get(),PT2Blocks.TAINT_LEAVES.get());
+        event.getBlockColors().register((state,world,pos,index)->{
+            return world!=null && pos!=null?BiomeColors.getAverageFoliageColor(world,pos):FoliageColor.getDefaultColor();
+        },PT2Blocks.GREATWOOD_LEAVES.get());
     }
     @OnlyIn(Dist.CLIENT)
     public static void itemColorLoad(ColorHandlerEvent.Item event){
-        event.getItemColors().register((stack,index)->FoliageColor.getDefaultColor(),PT2Blocks.GREATWOOD_LEAVES.get(),PT2Blocks.SILVERWOOD_LEAVES.get(),PT2Blocks.TAINT_LEAVES.get());
+        event.getItemColors().register((stack,index)->{
+            return FoliageColor.getDefaultColor();
+        },PT2Blocks.GREATWOOD_LEAVES.get());
     }
 }

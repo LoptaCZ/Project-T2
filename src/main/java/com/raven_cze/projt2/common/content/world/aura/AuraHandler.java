@@ -167,7 +167,7 @@ public class AuraHandler {
 			ProjectT2.LOGGER.debug("Life Value: {}",life);
 			for(int a=0;a<4;a++){
 				Direction dir = Direction.from3DDataValue(a);
-				Biome bgb2 = chunk.getLevel().getBiome(new BlockPos((chunk.getPos().x + dir
+				Biome bgb2 =chunk.getLevel().getBiome(new BlockPos((chunk.getPos().x + dir
 						  .getStepX()) * 16 + 8, 50, (chunk.getPos().z + dir
 						  .getStepZ()) * 16 + 8));
 				life += BiomeHandler.getBiomeAuraModifier(bgb2);

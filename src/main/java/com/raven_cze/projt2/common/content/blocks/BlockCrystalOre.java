@@ -1,11 +1,14 @@
 package com.raven_cze.projt2.common.content.blocks;
 
+import com.raven_cze.projt2.ProjectT2;
 import com.raven_cze.projt2.common.content.PT2Items;
 import com.raven_cze.projt2.common.content.PT2Particles;
-import com.raven_cze.projt2.common.content.particles.FXWisp;
+import com.raven_cze.projt2.common.content.particles.FXSparkle;
 import com.raven_cze.projt2.common.content.tiles.TileCrystalOre;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -36,15 +39,7 @@ public class BlockCrystalOre extends HalfTransparentBlock implements EntityBlock
     public static final DirectionProperty DIRECTION=DirectionProperty.create("direction");
     private String type="vis";
     public BlockCrystalOre(Properties properties){
-        super(properties);
-        //  idk 2.5F
-        //  idk 0.75F
-        //  0 - 15  | 0F - 1F
-        properties.sound(SoundType.STONE);
-        //  Registry Name
-        properties.randomTicks();// I Guess?!
-        //  idk true
-        //  idk 0.8F
+        super(properties.sound(SoundType.STONE).randomTicks());
         registerDefaultState(this.getStateDefinition().any());
     }
 
@@ -74,9 +69,20 @@ public class BlockCrystalOre extends HalfTransparentBlock implements EntityBlock
         int y=pos.getY();
         int z=pos.getZ();
 
-        ParticleOptions WISP=PT2Particles.FX_WISP.get();
-        ((FXWisp)WISP).setType(typeAsInt(this.type));
-        level.addParticle(WISP,(x+level.random.nextFloat()),(y+level.random.nextFloat()),(z+level.random.nextFloat()),0,0,0);
+        Particle PARTICLE=null;
+        try{
+            PARTICLE=new FXSparkle(level,x,y,z,ProjectT2.getSpriteSet(new ResourceLocation("projt2","sparkle"),true),0);
+            ((FXSparkle)PARTICLE).setType(typeAsInt(this.type));
+        }catch(Exception e){
+            ProjectT2.LOGGER.error(ProjectT2.MARKERS.ERROR,e.getMessage());
+            ProjectT2.LOGGER.warn(ProjectT2.MARKERS.WARN,"Reverting back to default Particle Type.");
+            e.printStackTrace();
+            try{level.addParticle(PT2Particles.SPARKLE.get(),x,y,z,0,0,0);}catch(Exception e2){
+                ProjectT2.LOGGER.error(ProjectT2.MARKERS.ERROR,"Cannot create particle: ",e2.getCause()!=null?e2.getCause():e2.getMessage());
+            }
+        }
+        if(PARTICLE!=null)
+            Minecraft.getInstance().particleEngine.add(PARTICLE);
     }
 
     @Override

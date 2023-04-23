@@ -8,10 +8,10 @@
 		"frame":"task",
 		"show_toast":"true",
 		"announce_to_chat":"true",
-		"background":"projt2:textures/block/blocks.png"
+		"background":"projt2:textures/block/silverwood_side.png"
 	},
 	"criteria": {
-		"research_book": {
+		"research_book":{
 			"trigger": "minecraft:inventory_changed",
 			"conditions": {
 				"items": [

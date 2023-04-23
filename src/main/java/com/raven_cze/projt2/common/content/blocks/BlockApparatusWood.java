@@ -46,10 +46,10 @@ public class BlockApparatusWood extends BlockApparatus{
 		String regName=state.getBlock().getRegistryName().getPath();
 		int x=pos.getX(),y=pos.getY(),z=pos.getZ();
 		if(regName.equals("totem_vis") && rand.nextInt(10)==0){
-			level.addParticle(ParticleTypes.HAPPY_VILLAGER,x+rand.nextFloat(),y+rand.nextFloat(),z+rand.nextFloat(),0.5F,0.5F,0.5F);
+			level.addAlwaysVisibleParticle(ParticleTypes.HAPPY_VILLAGER,x+rand.nextFloat(),y+rand.nextFloat(),z+rand.nextFloat(),0.5F,0.5F,0.5F);
 		}
 		if(regName.equals("totem_taint") && rand.nextInt(10)==0){
-			level.addParticle(ParticleTypes.ANGRY_VILLAGER,x+rand.nextFloat(),y+rand.nextFloat(),z+rand.nextFloat(),0.5F,0.5F,0.5F);
+			level.addAlwaysVisibleParticle(ParticleTypes.ANGRY_VILLAGER,x+rand.nextFloat(),y+rand.nextFloat(),z+rand.nextFloat(),0.5F,0.5F,0.5F);
 		}
 		if(regName.equals("condenser")){
 			if(level.getBlockEntity(pos)instanceof TileCondenser condenser){

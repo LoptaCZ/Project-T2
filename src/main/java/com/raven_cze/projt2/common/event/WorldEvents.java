@@ -1,5 +1,6 @@
 package com.raven_cze.projt2.common.event;
 
+import com.raven_cze.projt2.ProjectT2;
 import com.raven_cze.projt2.common.content.world.PT2WorldGen;
 import com.raven_cze.projt2.common.content.world.aura.AuraHandler;
 import net.minecraft.world.level.Level;
@@ -8,7 +9,7 @@ import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid=ProjectT2.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class WorldEvents{
     //public static WorldEvents INSTANCE=new WorldEvents();
 

@@ -23,7 +23,6 @@ public class BlockVoidCube extends PT2Block implements EntityBlock{
 
     public BlockVoidCube(Properties properties){
         super(properties);
-        properties.strength(Float.MAX_VALUE,Float.MAX_VALUE);
         CUBE_TYPE.value(3);
         this.type=0;
     }

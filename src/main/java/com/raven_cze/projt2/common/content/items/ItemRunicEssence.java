@@ -20,7 +20,7 @@ public class ItemRunicEssence extends PT2Item{
         if(be instanceof TileSeal seal){
             boolean added=false;
             for(int runa=0;runa<3;runa++){
-                if(seal.runes[runa]==-1){
+                if(seal.runes[runa]==-1 && ctx.getItemInHand().getItem().getRegistryName()!=null){
                     seal.runes[runa]=getRuneByte(ctx.getItemInHand().getItem().getRegistryName());
 
                     added=true;
@@ -44,14 +44,16 @@ public class ItemRunicEssence extends PT2Item{
     }
     private byte getRuneByte(ResourceLocation registryName){
         String name=registryName.getPath();
+        byte value;
         switch(name){
-            default->{return(byte)-1;}
-            case"runic_magic"->{return(byte)0;}
-            case"runic_air"->{return(byte)1;}
-            case"runic_water"->{return(byte)2;}
-            case"runic_earth"->{return(byte)3;}
-            case"runic_fire"->{return(byte)4;}
-            case"runic_dark"->{return(byte)5;}
+            default->value=-1;
+            case"runic_magic"->value=0;
+            case"runic_air"->value=1;
+            case"runic_water"->value=2;
+            case"runic_earth"->value=3;
+            case"runic_fire"->value=4;
+            case"runic_dark"->value=5;
         }
+        return value;
     }
 }

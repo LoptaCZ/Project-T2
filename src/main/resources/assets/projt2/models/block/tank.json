@@ -1,6 +1,5 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "block/cube_all",
 	"textures": {
 		"0": "projt2:block/tank_side",
 		"1": "projt2:block/tank_top",

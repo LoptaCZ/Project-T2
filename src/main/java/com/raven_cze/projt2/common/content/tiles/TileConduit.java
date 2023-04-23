@@ -1,23 +1,18 @@
 package com.raven_cze.projt2.common.content.tiles;
 
-import com.raven_cze.projt2.api.DirectionalPosition;
 import com.raven_cze.projt2.api.IConnection;
 import com.raven_cze.projt2.api.ITickableBlockEntity;
 import com.raven_cze.projt2.common.content.PT2Tiles;
-import com.raven_cze.projt2.common.content.blocks.BlockConduit;
 import com.raven_cze.projt2.common.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.Nullable;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class TileConduit extends BlockEntity implements IConnection,ITickableBlockEntity{
     public Direction facing;
@@ -32,10 +27,6 @@ public class TileConduit extends BlockEntity implements IConnection,ITickableBlo
     public int visSuction;
     public int taintSuction;
 
-    private final boolean[]disconnectedSides;
-    @Nullable
-    protected List<Connection>connectionCache;
-
     public TileConduit(BlockPos pos,BlockState state){
         super(PT2Tiles.TILE_CONDUIT.get(),pos,state);
         this.visSuction=0;
@@ -43,12 +34,10 @@ public class TileConduit extends BlockEntity implements IConnection,ITickableBlo
         this.pureVis=0.0F;
         this.taintedVis=0.0F;
         this.maxVis=4.0F;
-
-        this.disconnectedSides=new boolean[Direction.values().length];
     }
 
     @Override
-    public void tick(){
+    public void tickServer(){
         if(Objects.requireNonNull(this.level).isClientSide())return;
         if(this.displayPurePrev!=this.displayPure || this.displayTaintPrev!=this.displayTaint){
             this.level.setBlockAndUpdate(this.worldPosition,this.getBlockState());
@@ -59,6 +48,11 @@ public class TileConduit extends BlockEntity implements IConnection,ITickableBlo
         if(getSuction(null)>0)equalizeWithNeighbours();
         this.displayPure=Math.max(this.displayPure,Utils.Math.clamp(this.pureVis,0.0F,this.maxVis));
         this.displayTaint=Math.max(this.displayTaint,Utils.Math.clamp(this.taintedVis,0.0F,this.maxVis));
+    }
+
+    @Override
+    public void tickClient() {
+
     }
 
     protected void calculateSuction(){
@@ -153,165 +147,9 @@ public class TileConduit extends BlockEntity implements IConnection,ITickableBlo
     @Override
     public void setTaintSuction(int suctionAmount){this.taintSuction=suctionAmount;}
     @Override
-    public void setSuction(int suctionAmount){this.taintSuction=suctionAmount;}
+    public void setSuction(int suctionAmount){this.taintSuction=this.visSuction=suctionAmount;}
 
     @Override
     public BlockEntity getConnectableTile(Level level,Direction direction){return IConnection.super.getConnectableTile(level, direction);}
 
-    public boolean isDisconnected(Direction dir){
-        return disconnectedSides[dir.get3DDataValue()];
-    }
-
-    public void setDisconnected(Direction side, boolean disconnected){
-        disconnectedSides[side.get3DDataValue()]=disconnected;
-        setChanged();
-    }
-
-    public List<Connection> getConnections() {
-        if (level == null) {
-            return new ArrayList<>();
-        }
-        if (connectionCache == null) {
-            updateCache();
-            if (connectionCache == null) {
-                return new ArrayList<>();
-            }
-        }
-        return connectionCache;
-    }
-
-    public static void markPipesDirty(Level level,BlockPos pos){
-        List<BlockPos> travelPositions = new ArrayList<>();
-        LinkedList<BlockPos> queue = new LinkedList<>();
-        Block block = level.getBlockState(pos).getBlock();
-        if (!(block instanceof BlockConduit pipeBlock)) {
-            return;
-        }
-
-        travelPositions.add(pos);
-        addToDirtyList(level, pos, pipeBlock, travelPositions, queue);
-        while (queue.size() > 0) {
-            BlockPos blockPos = queue.removeFirst();
-            block = level.getBlockState(blockPos).getBlock();
-            if (block instanceof BlockConduit) {
-                addToDirtyList(level,blockPos,(BlockConduit)block,travelPositions,queue);
-            }
-        }
-        for (BlockPos p : travelPositions) {
-            BlockEntity te = level.getBlockEntity(p);
-            if (!(te instanceof TileConduit pipe)) {
-                continue;
-            }
-            pipe.connectionCache = null;
-        }
-    }
-    private static void addToDirtyList(Level world,BlockPos pos,BlockConduit pipeBlock,List<BlockPos>travelPositions,LinkedList<BlockPos>queue){
-        for (Direction direction : Direction.values()) {
-            if (pipeBlock.isConnected(world, pos, direction)) {
-                BlockPos p = pos.relative(direction);
-                if (!travelPositions.contains(p) && !queue.contains(p)) {
-                    travelPositions.add(p);
-                    queue.add(p);
-                }
-            }
-        }
-    }
-
-    private void updateCache() {
-        BlockState blockState = getBlockState();
-        if (!(blockState.getBlock() instanceof BlockConduit)) {
-            connectionCache = null;
-            return;
-        }
-
-        Map<DirectionalPosition, Integer> connections = new HashMap<>();
-
-        Map<BlockPos, Integer> queue = new HashMap<>();
-        List<BlockPos> travelPositions = new ArrayList<>();
-
-        if (level != null) {
-            addToQueue(level, worldPosition, queue, travelPositions, connections, 1);
-        }
-
-        while (queue.size() > 0) {
-            Map.Entry<BlockPos, Integer> blockPosIntegerEntry = queue.entrySet().stream().findAny().get();
-            addToQueue(level, blockPosIntegerEntry.getKey(), queue, travelPositions, connections, blockPosIntegerEntry.getValue());
-            travelPositions.add(blockPosIntegerEntry.getKey());
-            queue.remove(blockPosIntegerEntry.getKey());
-        }
-
-        connectionCache = connections.entrySet().stream().map(entry -> new Connection(entry.getKey().getPos(), entry.getKey().getDirection(), entry.getValue())).collect(Collectors.toList());
-    }
-
-    public void addToQueue(Level world, BlockPos position, Map<BlockPos, Integer> queue, List<BlockPos> travelPositions, Map<DirectionalPosition, Integer> insertPositions, int distance) {
-        Block block = world.getBlockState(position).getBlock();
-        if (!(block instanceof BlockConduit pipeBlock)) {
-            return;
-        }
-        for (Direction direction : Direction.values()) {
-            if (pipeBlock.isConnected(world, position, direction)) {
-                BlockPos p = position.relative(direction);
-                DirectionalPosition dp = new DirectionalPosition(p, direction.getOpposite());
-                if (canInsert(position, direction)) {
-                    if (!insertPositions.containsKey(dp)) {
-                        insertPositions.put(dp, distance);
-                    } else {
-                        if (insertPositions.get(dp) > distance) {
-                            insertPositions.put(dp, distance);
-                        }
-                    }
-                } else {
-                    if (!travelPositions.contains(p) && !queue.containsKey(p)) {
-                        queue.put(p, distance + 1);
-                    }
-                }
-            }
-        }
-    }
-
-    public boolean canInsert(BlockPos pos, Direction direction) {
-        BlockEntity tileEntity = level.getBlockEntity(pos.relative(direction));
-        if (tileEntity == null) {
-            return false;
-        }
-        if (tileEntity instanceof TileConduit) {
-            return false;
-        }
-        return canInsert(tileEntity, direction.getOpposite());
-    }
-
-    public boolean canInsert(BlockEntity tileEntity, Direction direction){return true;};
-
-    public static class Connection {
-        private final BlockPos pos;
-        private final Direction direction;
-        private final int distance;
-
-        public Connection(BlockPos pos, Direction direction, int distance) {
-            this.pos = pos;
-            this.direction = direction;
-            this.distance = distance;
-        }
-
-        public BlockPos getPos() {
-            return pos;
-        }
-
-        public Direction getDirection() {
-            return direction;
-        }
-
-        public int getDistance() {
-            return distance;
-        }
-
-        @Override
-        public String toString() {
-            return "Connection{" +
-                    "pos=" + pos +
-                    ", direction=" + direction +
-                    ", distance=" + distance +
-                    '}';
-        }
-    }
 }

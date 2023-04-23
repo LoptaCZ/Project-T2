@@ -10,7 +10,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -25,10 +24,6 @@ import org.jetbrains.annotations.Nullable;
 public class BlockHole extends BaseEntityBlock implements EntityBlock{
     public BlockHole(Properties properties){
         super(properties);
-        properties.strength(-1.0F,6000000.0F);
-        properties.sound(SoundType.STONE);
-        properties.noCollission();
-        //  LIGHT LEVEL
     }
 
     @Override

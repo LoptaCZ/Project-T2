@@ -51,7 +51,7 @@ public class TileSeal extends BlockEntity implements ITickableBlockEntity {
     }
 
     @Override
-    public void tick(){
+    public void tickServer(){
         this.portalSize=Mth.clamp(this.portalSize,0.0F,1.4F);
         if(this.delay<=0){
             int oldPower=0;
@@ -70,6 +70,8 @@ public class TileSeal extends BlockEntity implements ITickableBlockEntity {
         if(this.portalOpen && this.portalSize<1.4D)this.portalSize+=0.15F;
         if( (!this.portalOpen && this.portalSize>0.0F)||(this.delay>0&&this.portalSize>0.0F) )this.portalSize-=0.25F;
     }
+    @Override
+    public void tickClient(){}
 
     public TileSeal(BlockPos worldPos,BlockState state){
         super(PT2Tiles.TILE_SEAL.get(),worldPos,state);

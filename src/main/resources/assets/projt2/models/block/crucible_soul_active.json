@@ -1,6 +1,5 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "block/cube_all",
 	"textures": {
 		"0": "projt2:block/cauldron_top_soul",
 		"2": "projt2:block/crucible_inside_soul",

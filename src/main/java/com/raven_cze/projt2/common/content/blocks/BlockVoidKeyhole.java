@@ -10,8 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class BlockVoidKeyhole extends PT2Block implements EntityBlock{
     public BlockVoidKeyhole(Properties properties) {
-        super(properties);
-        properties.strength(10.0F);
+        super(properties.strength(10.0F));
     }
 
     @Override

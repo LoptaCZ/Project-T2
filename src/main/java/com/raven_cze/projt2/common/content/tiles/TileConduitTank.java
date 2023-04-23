@@ -32,94 +32,99 @@ public class TileConduitTank extends BlockEntity implements IConnection{
     @Nullable
     @Override
     public Packet<ClientGamePacketListener>getUpdatePacket(){
-        if(this.level.isClientSide)return null;
-        this.wait--;
-        if(this.wait<=0){
-            this.level.blockUpdated(this.worldPosition,this.getBlockState().getBlock());
-            this.wait=10;
-            calculateSuction();
-            int breakChance=999;
-            if(!this.getBlockState().getValue(null).equals(3)) breakChance=3333;
-            if(this.taintVis>getMaxVis()*0.9F)
-                if(this.getBlockState().getValue(null).equals(3) && this.level.random.nextInt(breakChance)==123){
-                    //TaintExplosion
-                    this.level.explode(null,this.worldPosition.getX(),this.worldPosition.getY(),this.worldPosition.getZ(),0.0F, Explosion.BlockInteraction.NONE);
-                }else if(this.level.random.nextInt(breakChance/8)==42){
-                    this.level.playSound(null,this.worldPosition, PT2Sounds.Creaking.get(),SoundSource.BLOCKS,0.75F,1.0F);
-                }
+        if(this.level!=null){
+            if(this.level.isClientSide)return null;
+            this.wait--;
+            if(this.wait<=0){
+                this.level.blockUpdated(this.worldPosition,this.getBlockState().getBlock());
+                this.wait=10;
+                calculateSuction();
+                int breakChance=999;
+                if (!this.getBlockState().getValue(null).equals(3))breakChance=3333;
+                if (this.taintVis > getMaxVis() * 0.9F)
+                    if (this.getBlockState().getValue(null).equals(3) && this.level.random.nextInt(breakChance) == 123) {
+                        //TaintExplosion
+                        this.level.explode(null, this.worldPosition.getX(), this.worldPosition.getY(), this.worldPosition.getZ(), 0.0F, Explosion.BlockInteraction.NONE);
+                    } else if (this.level.random.nextInt(breakChance / 8) == 42) {
+                        this.level.playSound(null, this.worldPosition, PT2Sounds.Creaking.get(), SoundSource.BLOCKS, 0.75F, 1.0F);
+                    }
+            }
+            equalizeWithNeighbours();
         }
-        equalizeWithNeighbours();
-
         return super.getUpdatePacket();
     }
 
-    protected void equalizeWithNeighbours() {
-        float stackpureVis = this.pureVis;
-        float stacktaintedVis = this.taintVis;
-        float stackmaxVis = getMaxVis();
-        int count = 1;
-        TileConduitTank ts;
-        while (this.level.getBlockEntity(this.worldPosition.above(count)) instanceof TileConduitTank st){
-            ts=st;
-            stackpureVis += ts.pureVis;
-            stacktaintedVis += ts.taintVis;
-            stackmaxVis += ts.getMaxVis();
-            count++;
-        }
-        for (int dir = 0; dir < 6; dir++) {
-            if (isConnectable(null)) {
-                BlockEntity te = this.isConnectable(null)?this:null;
-                if (te instanceof IConnection ent) {
-                    if (!(te instanceof TileConduitTank) && stackpureVis + stacktaintedVis < stackmaxVis && (getVisSuction(null) > ent.getVisSuction(null) || getTaintSuction(null) > ent.getTaintSuction(null))) {
-                        float[] results;
-                        results = ent.subtractVis(Math.min(this.fillAmount, stackmaxVis - stackpureVis + stacktaintedVis));
-                        if (getVisSuction(null) > ent.getVisSuction(null)) {
-                            stackpureVis += results[0];
-                        } else {
-                            ent.setPureVis(results[0] + ent.getPureVis());
-                        }
-                        if (getTaintSuction(null) > ent.getTaintSuction(null)) {
-                            stacktaintedVis += results[1];
-                        } else {
-                            ent.setTaintedVis(results[1] + ent.getTaintedVis());
+    protected void equalizeWithNeighbours(){
+        if(this.level!=null){
+            float stackpureVis = this.pureVis;
+            float stacktaintedVis = this.taintVis;
+            float stackmaxVis = getMaxVis();
+            int count = 1;
+            TileConduitTank ts;
+            while (this.level.getBlockEntity(this.worldPosition.above(count)) instanceof TileConduitTank st) {
+                ts = st;
+                stackpureVis += ts.pureVis;
+                stacktaintedVis += ts.taintVis;
+                stackmaxVis += ts.getMaxVis();
+                count++;
+            }
+            for (int dir = 0; dir < 6; dir++) {
+                if (isConnectable(null)) {
+                    BlockEntity te = this.isConnectable(null) ? this : null;
+                    if (te instanceof IConnection ent) {
+                        if (!(te instanceof TileConduitTank) && stackpureVis + stacktaintedVis < stackmaxVis && (getVisSuction(null) > ent.getVisSuction(null) || getTaintSuction(null) > ent.getTaintSuction(null))) {
+                            float[] results;
+                            results = ent.subtractVis(Math.min(this.fillAmount, stackmaxVis - stackpureVis + stacktaintedVis));
+                            if (getVisSuction(null) > ent.getVisSuction(null)) {
+                                stackpureVis += results[0];
+                            } else {
+                                ent.setPureVis(results[0] + ent.getPureVis());
+                            }
+                            if (getTaintSuction(null) > ent.getTaintSuction(null)) {
+                                stacktaintedVis += results[1];
+                            } else {
+                                ent.setTaintedVis(results[1] + ent.getTaintedVis());
+                            }
                         }
                     }
                 }
             }
-        }
-        float total = stackpureVis + stacktaintedVis;
-        if (Math.round(total) >= stackmaxVis)
-            setSuction(0);
-        float pratio = stackpureVis / total;
-        float tratio = stacktaintedVis / total;
-        count = 0;
-        boolean clearrest = false;
-        while (this.level.getBlockEntity(this.worldPosition.above(count)) instanceof TileConduitTank st) {
-            ts=st;
-            if (clearrest) {
-                ts.pureVis = 0.0F;
-                ts.taintVis = 0.0F;
-            } else if (total <= ts.getMaxVis()) {
-                ts.pureVis = stackpureVis;
-                ts.taintVis = stacktaintedVis;
-                clearrest = true;
-            } else {
-                ts.pureVis = ts.getMaxVis() * pratio;
-                ts.taintVis = ts.getMaxVis() * tratio;
-                stackpureVis -= ts.pureVis;
-                stacktaintedVis -= ts.taintVis;
+            float total = stackpureVis + stacktaintedVis;
+            if (Math.round(total) >= stackmaxVis)
+                setSuction(0);
+            float pratio = stackpureVis / total;
+            float tratio = stacktaintedVis / total;
+            count = 0;
+            boolean clearrest = false;
+            while (this.level.getBlockEntity(this.worldPosition.above(count)) instanceof TileConduitTank st) {
+                ts = st;
+                if (clearrest) {
+                    ts.pureVis = 0.0F;
+                    ts.taintVis = 0.0F;
+                } else if (total <= ts.getMaxVis()) {
+                    ts.pureVis = stackpureVis;
+                    ts.taintVis = stacktaintedVis;
+                    clearrest = true;
+                } else {
+                    ts.pureVis = ts.getMaxVis() * pratio;
+                    ts.taintVis = ts.getMaxVis() * tratio;
+                    stackpureVis -= ts.pureVis;
+                    stacktaintedVis -= ts.taintVis;
+                }
+                total = stackpureVis + stacktaintedVis;
+                count++;
             }
-            total = stackpureVis + stacktaintedVis;
-            count++;
         }
     }
     public void calculateSuction(){
         setSuction(10);
-        for(int dir=0;dir<4;dir++){
-            if(isConnectable(Direction.values()[dir])){
-                BlockEntity te=getConnectableTile(this.level,Direction.values()[dir]);
-                if(te instanceof TileBellows && ((TileBellows) te).isBoosting(this))
-                    setSuction(getSuction(null)+10);
+        if(this.level!=null){
+            for (int dir = 0; dir < 4; dir++) {
+                if (isConnectable(Direction.values()[dir])) {
+                    BlockEntity te = getConnectableTile(this.level, Direction.values()[dir]);
+                    if (te instanceof TileBellows && ((TileBellows) te).isBoosting(this))
+                        setSuction(getSuction(null) + 10);
+                }
             }
         }
     }

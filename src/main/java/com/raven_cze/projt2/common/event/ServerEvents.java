@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid=ProjectT2.MODID,bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class ServerEvents{
     public static ConcurrentHashMap<ResourceKey<Level>,AuraThread>auraThreads=new ConcurrentHashMap<>();
 

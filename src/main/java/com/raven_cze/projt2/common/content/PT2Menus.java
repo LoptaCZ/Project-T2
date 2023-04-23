@@ -1,8 +1,8 @@
 package com.raven_cze.projt2.common.content;
 
 import com.raven_cze.projt2.ProjectT2;
+import com.raven_cze.projt2.common.PT2Config;
 import com.raven_cze.projt2.common.content.world.inventory.*;
-import com.raven_cze.projt2.common.config.CommonCFG;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
@@ -13,7 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class PT2Menus{
-    protected static final DeferredRegister<MenuType<?>>REGISTRY=DeferredRegister.create(ForgeRegistries.CONTAINERS,ProjectT2.MODID);
+    public static final DeferredRegister<MenuType<?>>REGISTRY=DeferredRegister.create(ForgeRegistries.CONTAINERS,ProjectT2.MODID);
 
     public static final RegistryObject<MenuType<DiscoveryTomeMenu>>MENU_DISCOVERY_TOME=register(DiscoveryTomeMenu::new,"discovery_tome");
     public static final RegistryObject<MenuType<VoidChestMenu>>MENU_VOID_CHEST=register(VoidChestMenu::create,"void_chest");
@@ -27,7 +27,7 @@ public class PT2Menus{
     }
 
     public static void register(IEventBus eventBus){
-        if(CommonCFG.debugMode.get())ProjectT2.LOGGER.debug(ProjectT2.MARKERS.REGISTRY,"Registering MENUs");
+        if(PT2Config.SHARED.debugMode.get())ProjectT2.LOGGER.debug(ProjectT2.MARKERS.REGISTRY,"Registering MENUs");
         REGISTRY.register(eventBus);
     }
 }

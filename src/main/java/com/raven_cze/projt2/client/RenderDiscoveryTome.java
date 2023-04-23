@@ -3,7 +3,7 @@ package com.raven_cze.projt2.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import com.raven_cze.projt2.ProjectT2;
-import com.raven_cze.projt2.common.config.ClientCFG;
+import com.raven_cze.projt2.common.PT2Config;
 import com.raven_cze.projt2.common.content.PT2Items;
 import com.raven_cze.projt2.common.content.items.ItemDiscoveryTome;
 import com.raven_cze.projt2.common.util.Utils;
@@ -27,7 +27,7 @@ public class RenderDiscoveryTome{
         return model;
     }
     public static boolean renderHand(ItemStack stack,ItemTransforms.TransformType type,boolean leftHand,PoseStack pose,MultiBufferSource buffer,int light){
-        if( ClientCFG.lowFX.get() || !type.firstPerson() || !stack.is(PT2Items.BOOK.get()) )return false;
+        if( PT2Config.CLIENT.lowFX.get() || !type.firstPerson() || !stack.is(PT2Items.BOOK.get()) )return false;
         try{
             doRender(leftHand,pose,buffer,light,TickHandler.partialTicks);
             return true;

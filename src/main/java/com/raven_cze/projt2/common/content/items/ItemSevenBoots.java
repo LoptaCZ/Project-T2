@@ -1,9 +1,11 @@
 package com.raven_cze.projt2.common.content.items;
 
-import net.minecraft.world.entity.EquipmentSlot;
-
-public class ItemSevenBoots extends PT2ArmorItem{
+public class ItemSevenBoots extends ItemStridingBoots{
     public ItemSevenBoots(Properties properties) {
-        super(PT2ArmorMats.SPECIAL, EquipmentSlot.FEET,properties);
+        super(properties);
+        this.jumpPower=0.75F;
+        this.fallDmg=3;
+        this.moveSpeed=0.075F;
+        this.jumpMax=1.55F;
     }
 }

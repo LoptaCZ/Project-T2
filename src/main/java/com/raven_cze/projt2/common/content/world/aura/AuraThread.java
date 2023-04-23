@@ -2,7 +2,6 @@ package com.raven_cze.projt2.common.content.world.aura;
 
 import com.raven_cze.projt2.ProjectT2;
 import com.raven_cze.projt2.common.event.ServerEvents;
-import com.raven_cze.projt2.common.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

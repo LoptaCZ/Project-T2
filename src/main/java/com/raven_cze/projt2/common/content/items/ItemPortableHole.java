@@ -48,26 +48,42 @@ public class ItemPortableHole extends PT2Item implements IEnchantableItem,IVisRe
         if(cBlock.hasBlockEntity()){
             return InteractionResult.PASS;
         }else{
-            createHole(ctx.getLevel(),ctx.getClickedPos(),ctx.getClickedFace(),(byte)10,10);
+            createHole(ctx.getLevel(),ctx.getClickedPos(),ctx.getClickedFace(),(byte)50,10);
         }
         return InteractionResult.SUCCESS;
     }
 
     public static boolean createHole(Level level,BlockPos pos,Direction side,byte count,int depth){
         BlockState state=level.getBlockState(pos);
+        int flags=3;
         if(!level.isClientSide && state.getBlock()!= net.minecraft.world.level.block.Blocks.AIR && state.getBlock()!= net.minecraft.world.level.block.Blocks.BEDROCK && state.getBlock().defaultDestroyTime()!=-1.0F){
-            System.out.println(state);
-            if(!level.setBlockAndUpdate(pos,PT2Blocks.HOLE.get().defaultBlockState())){
-                TileHole th=new TileHole(pos,state,(short)10,(byte)1,state);
-                //TileHole th=(TileHole)level.getBlockEntity(pos);
-                if(th.getLevel()!=null){
-                    TileHole.oldState=state;
-                    TileHole.countdownMax =(short)depth;
-                    TileHole.count =count;
-                    TileHole.direction =side;
+            for(int hole=0;hole<depth;hole++){
+                switch(side){
+                    case NORTH->{
+                        BlockPos pose=pos;
+                        if(hole!=0)pose=pos.south(hole);
+                        state=level.getBlockState(pose);
+                        TileHole.oldState=state;
+                        TileHole.countdownMax=count;
+                        level.setBlockEntity(new TileHole(pose,PT2Blocks.HOLE.get().defaultBlockState(),count,state));
+                        level.setBlock(pose,PT2Blocks.HOLE.get().defaultBlockState(),flags);
+                        //level.setBlockAndUpdate(pose,PT2Blocks.HOLE.get().defaultBlockState());
+                    }
+                    case EAST->{}
+                    case SOUTH->{
+                        BlockPos pose=pos;
+                        if(hole!=0)pose=pos.north(hole);
+                        state=level.getBlockState(pose);
+                        TileHole.oldState=state;
+                        TileHole.countdownMax=count;
+                        level.setBlockEntity(new TileHole(pose,PT2Blocks.HOLE.get().defaultBlockState(),count,state));
+                        level.setBlock(pose,PT2Blocks.HOLE.get().defaultBlockState(),flags);
+                        //level.setBlockAndUpdate(pose,PT2Blocks.HOLE.get().defaultBlockState());
+                    }
+                    case WEST->{}
 
-                    th.requestModelDataUpdate();
-                    th.setChanged();
+                    case UP->{}
+                    case DOWN->{}
                 }
             }
             return true;

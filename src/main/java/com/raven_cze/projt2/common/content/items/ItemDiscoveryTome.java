@@ -25,7 +25,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LecternBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -70,11 +69,12 @@ public class ItemDiscoveryTome extends PT2Item {
 				if(block.getRegistryName()!=null)
 					if(block.getRegistryName().getNamespace().equals(ProjectT2.MODID))
 						openGUI(player,level,pos);
+					else return InteractionResult.FAIL;
 			}else{
 				if(level.getBlockState(pos).is(Blocks.LECTERN))
 					return LecternBlock.tryPlaceBook(player,level,pos,state,new ItemStack(this))? InteractionResult.sidedSuccess(level.isClientSide) : InteractionResult.PASS;
 				else
-					super.use(level,player,context.getHand());
+					openGUI(player,level,null);
 			}
 		}
 		return InteractionResult.sidedSuccess(context.getLevel().isClientSide());

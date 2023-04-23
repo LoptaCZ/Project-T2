@@ -5,9 +5,8 @@ import com.raven_cze.projt2.client.TickHandler;
 import com.raven_cze.projt2.client.gui.screen.DiscoveryTomeScreen;
 import com.raven_cze.projt2.client.gui.screen.GeneratorScreen;
 import com.raven_cze.projt2.client.gui.screen.VoidChestScreen;
+import com.raven_cze.projt2.common.PT2Config;
 import com.raven_cze.projt2.common.PT2SaveData;
-import com.raven_cze.projt2.common.config.ClientCFG;
-import com.raven_cze.projt2.common.config.CommonCFG;
 import com.raven_cze.projt2.common.content.*;
 import com.raven_cze.projt2.common.content.world.feature.PT2FeatureConfig;
 import com.raven_cze.projt2.common.content.world.feature.PT2TreePlacements;
@@ -15,10 +14,17 @@ import com.raven_cze.projt2.common.content.world.feature.PT2Vegetation;
 import com.raven_cze.projt2.common.content.world.feature.PT2VegetationPlacements;
 import com.raven_cze.projt2.common.network.Network;
 import com.raven_cze.projt2.common.network.commands.CommandHandler;
+import com.raven_cze.projt2.common.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.TickEvent;
@@ -34,10 +40,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.Random;
 
 @Mod("projt2")
+@Mod.EventBusSubscriber(modid=ProjectT2.MODID)
 public class ProjectT2{
 	public static HashMap<?,?>SpecialTileHM;
 	public static int dawnInc=0;
@@ -55,15 +64,15 @@ public class ProjectT2{
 		
 		IEventBus eventBus=FMLJavaModLoadingContext.get().getModEventBus();
 
-		PT2Blocks.register(eventBus);
-		PT2Tiles.register(eventBus);
-		PT2Items.register(eventBus);
-		PT2Enchants.register(eventBus);
-		PT2Sounds.register(eventBus);
-		PT2Entities.register(eventBus);
-		PT2Particles.register(eventBus);
-		PT2Menus.register(eventBus);
-		PT2Features.register(eventBus);
+		if(PT2Blocks.REGISTRY.getEntries().size()>=1)PT2Blocks.register(eventBus);
+		if(PT2Tiles.REGISTRY.getEntries().size()>=1)PT2Tiles.register(eventBus);
+		if(PT2Items.REGISTRY.getEntries().size()>=1)PT2Items.register(eventBus);
+		if(PT2Enchants.REGISTRY.getEntries().size()>=1)PT2Enchants.register(eventBus);
+		if(PT2Sounds.REGISTRY.getEntries().size()>=1)PT2Sounds.register(eventBus);
+		if(PT2Entities.REGISTRY.getEntries().size()>=1)PT2Entities.register(eventBus);
+		if(PT2Particles.REGISTRY.getEntries().size()>=1)PT2Particles.register(eventBus);
+		if(PT2Menus.REGISTRY.getEntries().size()>=1)PT2Menus.register(eventBus);
+		if(PT2Features.REGISTRY.getEntries().size()>=1)PT2Features.register(eventBus);
 
 		eventBus.addListener(this::setup);
 		eventBus.addListener(this::setupClient);
@@ -72,11 +81,11 @@ public class ProjectT2{
 		MinecraftForge.EVENT_BUS.addListener(this::setupClient);
 		MinecraftForge.EVENT_BUS.register(new ClientHandler());
 
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ClientCFG.SPEC,"projt2-client.toml");
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonCFG.SPEC,"projt2-common.toml");
+		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT,PT2Config.client);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON,PT2Config.shared);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER,PT2Config.server);
 
-		FMLJavaModLoadingContext.get().getModEventBus().register(ClientCFG.class);
-		FMLJavaModLoadingContext.get().getModEventBus().register(CommonCFG.class);
+		eventBus.register(PT2Config.class);
 	}
 	private void setupClient(final FMLClientSetupEvent event){
 		event.enqueueWork(()->{
@@ -95,7 +104,7 @@ public class ProjectT2{
 		bus.addListener((e)->PT2Blocks.prepareSpecialRender());
 	}
 	private void setup(final FMLCommonSetupEvent event){
-		if(CommonCFG.debugMode.get())LOGGER.info("Pre-Init Phase");
+		if(PT2Config.SHARED.debugMode.get())LOGGER.info("Pre-Init Phase");
 
 		IEventBus bus=MinecraftForge.EVENT_BUS;
 		bus.addListener(this::registerCommands);
@@ -120,6 +129,40 @@ public class ProjectT2{
 	}
 	public void registerCommands(RegisterCommandsEvent event){
 		CommandHandler.registerServer(event.getDispatcher());
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	public static SpriteSet getSpriteSet(ResourceLocation name,boolean isAnimated){
+		SpriteSet sprites=null;
+		try{
+			sprites=new SpriteSet(){
+				@Override
+				public @NotNull TextureAtlasSprite get(int age,int life){
+					int index;
+					index=Mth.clamp(Math.round((float)age/life),0,32);
+					ResourceLocation resLoc;
+					if(isAnimated)
+						resLoc=new ResourceLocation(name.getNamespace(),name.getPath().replaceAll("[0-9]",String.valueOf(index)));
+					else
+						resLoc=name;
+					System.out.print(Minecraft.getInstance().getTextureAtlas(resLoc));
+					return Minecraft.getInstance().getTextureAtlas(resLoc).apply(resLoc).atlas().getSprite(resLoc);
+				}
+
+				@Override
+				public @NotNull TextureAtlasSprite get(@NotNull Random r){
+					TextureAtlasSprite atlas;
+					//if(isAnimated){resLoc=new ResourceLocation(name.getNamespace(),name.getPath().replaceAll("[0-9]",String.valueOf(r.nextInt(0,32))));}
+					atlas=Minecraft.getInstance().getTextureAtlas(name).apply(name);
+					return atlas.atlas().getSprite(name);
+				}
+			};
+		}catch(Exception e){
+			Exception ex;
+			ex=e;
+			if(Utils.changed(ex)){e.printStackTrace();}
+		}
+		return sprites;
 	}
 
 	@SuppressWarnings("unused")

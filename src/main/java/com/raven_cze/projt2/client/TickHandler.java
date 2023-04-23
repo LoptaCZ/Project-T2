@@ -6,7 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(value={Dist.CLIENT},modid= ProjectT2.MODID,bus=Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(value={Dist.CLIENT},modid=ProjectT2.MODID,bus=Mod.EventBusSubscriber.Bus.MOD)
 public class TickHandler{
     public static int ticksWithTomeOpen=0;
     public static int pageFlipTicks=0;

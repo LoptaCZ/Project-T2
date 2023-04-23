@@ -84,47 +84,39 @@ public class BlockApparatusStone extends BlockApparatus implements EntityBlock{
 	@Nullable
 	@Override
 	public BlockEntity newBlockEntity(@NotNull BlockPos pos,@NotNull BlockState state){
+		BlockEntity tile=null;
 		if(this.getRegistryName()!=null){
 			String name=this.getRegistryName().getPath();
-			BlockEntity tile;
 			switch(name){
 				case"arcane_seal"->{
 					tile=new TileSeal(pos,state);
 					TileSeal seal=(TileSeal)tile;
 					seal.orientation=this.defaultBlockState().getValue(DIRECTION);
-					return tile;
 				}
 				case"infuser"->{
 					tile=new TileInfuser(pos,state);
-					return tile;
 				}
 				case"infuser_dark"->{
 					tile=new TileInfuserDark(pos,state);
-					return tile;
 				}
 				case"enchanter"->{
 					tile=new TileEnchanter(pos,state);
-					return tile;
 				}
 				case"researcher"->{
 					tile=new TileResearcher(pos,state);
-					return tile;
 				}
 				case"darkness_gen"->{
 					tile=new TileDarknessGenerator(pos,state);
-					return tile;
 				}
 				case"enchanter_adv"->{
 					tile=new TileEnchanterAdvanced(pos,state);
-					return tile;
 				}
 				case"urn"->{
 					tile=new TileUrn(pos,state);
-					return tile;
 				}
 			}//switch
 		}//if Valid RegistryName
-		return null;
+		return tile;
 	}
 
 	@Override

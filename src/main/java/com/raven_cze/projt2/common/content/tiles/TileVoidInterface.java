@@ -1,8 +1,8 @@
 package com.raven_cze.projt2.common.content.tiles;
 
+import com.raven_cze.projt2.common.content.blocks.BlockApparatusMetal;
 import com.raven_cze.projt2.common.content.world.inventory.VoidChestMenu;
 import com.raven_cze.projt2.common.content.PT2Tiles;
-import com.raven_cze.projt2.common.content.blocks.BlockVoidInterface;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -39,7 +39,7 @@ public class TileVoidInterface extends BlockEntity implements MenuProvider{
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId,@NotNull Inventory pInventory,@NotNull Player pPlayer){
-        this.network=this.getBlockState().getValue(BlockVoidInterface.FREQUENCY).byteValue();
+        this.network=this.getBlockState().getValue(BlockApparatusMetal.FREQUENCY).byteValue();
         if (this.level != null) {
             return VoidChestMenu.create(pContainerId,pInventory,null);
         }

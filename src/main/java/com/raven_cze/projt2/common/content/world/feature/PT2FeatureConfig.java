@@ -14,7 +14,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
 
-public class PT2FeatureConfig {
+public class PT2FeatureConfig{
     public static void initialize(){}
     public static final ConfiguredFeature<TreeConfiguration,?>GREATWOOD_000=FeatureUtils.register("greatwood",PT2Features.GREATWOOD_TREE.get().configured(getGreatwood().build()));
     public static final ConfiguredFeature<TreeConfiguration,?>SILVERWOOD_000=FeatureUtils.register("silverwood",PT2Features.SILVERWOOD_TREE.get().configured(getSilverwood().build()));

@@ -36,6 +36,14 @@ public class BlockCustomWood extends RotatedPillarBlock {
 				return PT2Blocks.STRIPPED_TAINT_LOG.get().defaultBlockState().setValue(AXIS,state.getValue(AXIS));
 			}if(state.is(PT2Blocks.PETRIFIED_LOG.get())){
 				return PT2Blocks.STRIPPED_PETRIFIED_LOG.get().defaultBlockState().setValue(AXIS,state.getValue(AXIS));
+			}if(state.is(PT2Blocks.GREATWOOD_WOOD.get())){
+				return PT2Blocks.STRIPPED_GREATWOOD_WOOD.get().defaultBlockState().setValue(AXIS,state.getValue(AXIS));
+			}if(state.is(PT2Blocks.SILVERWOOD_WOOD.get())){
+				return PT2Blocks.STRIPPED_SILVERWOOD_WOOD.get().defaultBlockState().setValue(AXIS,state.getValue(AXIS));
+			}if(state.is(PT2Blocks.PETRIFIED_WOOD.get())){
+				return PT2Blocks.STRIPPED_PETRIFIED_WOOD.get().defaultBlockState().setValue(AXIS,state.getValue(AXIS));
+			}if(state.is(PT2Blocks.TAINT_WOOD.get())){
+				return PT2Blocks.STRIPPED_TAINT_WOOD.get().defaultBlockState().setValue(AXIS,state.getValue(AXIS));
 			}
 		}
 		

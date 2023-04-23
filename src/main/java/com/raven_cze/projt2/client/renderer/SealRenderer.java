@@ -7,7 +7,7 @@ import com.mojang.math.Matrix4f;
 import com.mojang.math.Quaternion;
 import com.mojang.math.Vector3f;
 import com.raven_cze.projt2.ProjectT2;
-import com.raven_cze.projt2.common.config.ClientCFG;
+import com.raven_cze.projt2.common.PT2Config;
 import com.raven_cze.projt2.common.content.tiles.TileSeal;
 import com.raven_cze.projt2.common.util.Utils;
 import net.minecraft.client.renderer.LightTexture;
@@ -183,7 +183,7 @@ public class SealRenderer implements BlockEntityRenderer<TileSeal>{
     private void drawPortal(TileSeal seal,BlockPos pos,float ticks,PoseStack pose){
         Direction facing=seal.orientation;
         pose.pushPose();
-        if(!ClientCFG.portalGFX.get())return;
+        if(!PT2Config.CLIENT.portalGFX.get())return;
         {
             //      Code goes here
             RenderSystem.enableBlend();

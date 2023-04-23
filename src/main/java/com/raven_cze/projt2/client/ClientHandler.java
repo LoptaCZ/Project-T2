@@ -6,11 +6,11 @@ import com.raven_cze.projt2.client.model.ModelCrystal;
 import com.raven_cze.projt2.client.model.ModelGenCore;
 import com.raven_cze.projt2.client.overlay.VisDetector;
 import com.raven_cze.projt2.client.renderer.*;
-import com.raven_cze.projt2.common.config.ClientCFG;
+import com.raven_cze.projt2.common.PT2Config;
 import com.raven_cze.projt2.common.content.PT2Blocks;
 import com.raven_cze.projt2.common.content.PT2Particles;
 import com.raven_cze.projt2.common.content.PT2Tiles;
-import com.raven_cze.projt2.common.content.particles.FXWisp;
+import com.raven_cze.projt2.common.content.particles.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -68,13 +68,12 @@ public class ClientHandler{
 	public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event){
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_CRYSTAL.get(),CrystalOreRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_HOLE.get(),HoleRenderer::new);
-		//event.registerBlockEntityRenderer(PT2Tiles.TILE_NITOR.get(),NitorRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_VOID_CUBE.get(),VoidCubeRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_VOID_KEYHOLE.get(),VoidKeyholeRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_VOID_LOCK.get(),VoidLockRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_VOID_CHEST.get(),VoidChestRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_VOID_INTERFACE.get(),VoidInterfaceRenderer::new);
-		event.registerBlockEntityRenderer(PT2Tiles.TILE_CONDUIT.get(),ConduitRenderer::new);
+		//event.registerBlockEntityRenderer(PT2Tiles.TILE_CONDUIT.get(),ConduitRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_SEAL.get(),SealRenderer::new);
 		event.registerBlockEntityRenderer(PT2Tiles.TILE_GENERATOR.get(),GeneratorRenderer::new);
 	}
@@ -82,7 +81,7 @@ public class ClientHandler{
 	@SubscribeEvent
 	public void registerBlockColors(ColorHandlerEvent.Block event){
 		BlockColor leavesColor=(state,world,pos,tint)->(world!=null && pos!=null)? BiomeColors.getAverageFoliageColor(world,pos): FoliageColor.getDefaultColor();
-		event.getBlockColors().register(leavesColor,PT2Blocks.GREATWOOD_LEAVES.get(),PT2Blocks.SILVERWOOD_LEAVES.get(),PT2Blocks.TAINT_LEAVES.get());
+		event.getBlockColors().register(leavesColor,PT2Blocks.GREATWOOD_LEAVES.get());
 	}
 
 	private static void registerOverlays(){
@@ -91,8 +90,16 @@ public class ClientHandler{
 
 	@SubscribeEvent
 	public static void registerParticleFactories(final ParticleFactoryRegisterEvent event){
-		ProjectT2.LOGGER.debug("Registering FX Wisp Particle Factory");
-		Minecraft.getInstance().particleEngine.register(PT2Particles.FX_WISP.get(),FXWisp.Provider::new);
+		ProjectT2.LOGGER.debug(ProjectT2.MARKERS.REGISTRY,"Registering basic FX particle factories");
+		Minecraft.getInstance().particleEngine.register(PT2Particles.WISP.get(),FXWisp.Provider::new);
+		Minecraft.getInstance().particleEngine.register(PT2Particles.SPARKLE.get(),FXSparkle.Provider::new);
+
+		Minecraft.getInstance().particleEngine.register(PT2Particles.BEAM.get(),FXBeam.Provider::new);
+		Minecraft.getInstance().particleEngine.register(PT2Particles.DRIP.get(),FXDrip.Provider::new);
+		Minecraft.getInstance().particleEngine.register(PT2Particles.FREEZE.get(),FXFreeze.Provider::new);
+		Minecraft.getInstance().particleEngine.register(PT2Particles.GUIDE_WISP.get(),FXGuideWisp.Provider::new);
+		Minecraft.getInstance().particleEngine.register(PT2Particles.SCORCH.get(),FXScorch.Provider::new);
+		Minecraft.getInstance().particleEngine.register(PT2Particles.WIND.get(),FXWind.Provider::new);
 	}
 
 	@SubscribeEvent
@@ -115,7 +122,7 @@ public class ClientHandler{
 		Minecraft mc=Minecraft.getInstance();
 		double vT=(fov+mc.options.fov/2.0F);
 		int j=Mth.clamp(64<<3-mc.options.renderDistance,-400,400);
-		double rD=ClientCFG.lowFX.get()?(double)(j/2):j;
+		double rD=PT2Config.CLIENT.lowFX.get()?(double)(j/2):j;
 		float f1=Mth.cos(-entity.yHeadRot*0.01745329F-3.141593F);
 		float f3=Mth.sin(-entity.yHeadRot*0.01745329F-3.141593F);
 		float f5=-Mth.cos(-entity.yBodyRot*0.01745329F-3.141593F);

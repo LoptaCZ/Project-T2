@@ -1,7 +1,7 @@
 package com.raven_cze.projt2.common.content;
 
 import com.raven_cze.projt2.ProjectT2;
-import com.raven_cze.projt2.common.config.CommonCFG;
+import com.raven_cze.projt2.common.PT2Config;
 import com.raven_cze.projt2.common.content.enchantment.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -11,7 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class PT2Enchants{
-    protected static final DeferredRegister<Enchantment>REGISTRY=DeferredRegister.create(ForgeRegistries.ENCHANTMENTS,ProjectT2.MODID);
+    public static final DeferredRegister<Enchantment>REGISTRY=DeferredRegister.create(ForgeRegistries.ENCHANTMENTS,ProjectT2.MODID);
 
     public static final RegistryObject<Enchantment> IceAspect=REGISTRY.register("ice_aspect",()->new PT2IceAspect(Enchantment.Rarity.RARE, EnchantmentCategory.BREAKABLE,PT2Items.BOTH));
     public static final RegistryObject<Enchantment>Potency=REGISTRY.register("potency",()->new PT2Potency(Enchantment.Rarity.RARE,EnchantmentCategory.BREAKABLE,null));
@@ -23,7 +23,7 @@ public class PT2Enchants{
     public static final RegistryObject<Enchantment>VenomAspect=REGISTRY.register("venom_aspect",()->new PT2VenomAspect(Enchantment.Rarity.RARE,EnchantmentCategory.BREAKABLE,null));
 
     public static void register(IEventBus eventBus){
-        if(CommonCFG.debugMode.get())ProjectT2.LOGGER.debug(ProjectT2.MARKERS.REGISTRY,"Registering ENCHANTs");
+        if(PT2Config.SHARED.debugMode.get())ProjectT2.LOGGER.debug(ProjectT2.MARKERS.REGISTRY,"Registering ENCHANTs");
         REGISTRY.register(eventBus);
     }
 }

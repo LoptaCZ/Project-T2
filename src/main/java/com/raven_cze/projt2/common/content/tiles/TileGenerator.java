@@ -3,7 +3,7 @@ package com.raven_cze.projt2.common.content.tiles;
 import com.raven_cze.projt2.api.IUpgradable;
 import com.raven_cze.projt2.api.TileVisUser;
 import com.raven_cze.projt2.api.internal.InternalEnergyStorage;
-import com.raven_cze.projt2.common.config.ClientCFG;
+import com.raven_cze.projt2.common.PT2Config;
 import com.raven_cze.projt2.common.content.PT2Sounds;
 import com.raven_cze.projt2.common.content.PT2Tiles;
 import com.raven_cze.projt2.common.content.world.inventory.GeneratorMenu;
@@ -51,7 +51,6 @@ public class TileGenerator extends TileVisUser implements IUpgradable,MenuProvid
     private final LazyOptional<IEnergyStorage>lazyEnergy;
     private final ItemStackHandler inventory=new ItemStackHandler();
     private final LazyOptional<IItemHandler>lazyInv;
-
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int id,@NotNull Inventory inv,@NotNull Player ply){
@@ -99,7 +98,7 @@ public class TileGenerator extends TileVisUser implements IUpgradable,MenuProvid
                         this.storedEnergy -= energyUsed * 3;
                         emitPower = true;
                         int arcs = energyUsed / 2;
-                        if (!ClientCFG.lowFX.get()) arcs = energyUsed / 3;
+                        if (!PT2Config.CLIENT.lowFX.get()) arcs = energyUsed / 3;
                         if (this.level.random.nextInt(6) < arcs && energyUsed > 0) {
                             //Create LightningBolt from CodeChicken API
                             //  With type 0

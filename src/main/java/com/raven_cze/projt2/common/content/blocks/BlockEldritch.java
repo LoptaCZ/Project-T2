@@ -11,9 +11,7 @@ import net.minecraft.world.phys.HitResult;
 
 public class BlockEldritch extends PT2Block{
     public BlockEldritch(Properties properties,boolean isMonolith){
-        super(properties);
-        properties.strength(isMonolith?6000000.0F:10.0F,isMonolith?6000000.0F:10.0F);
-        //properties.lootFrom(()->new BlockEldritch(properties,false) );
+        super(properties.strength(isMonolith?6000000.0F:10.0F,isMonolith?6000000.0F:10.0F));
     }
 
     @Override

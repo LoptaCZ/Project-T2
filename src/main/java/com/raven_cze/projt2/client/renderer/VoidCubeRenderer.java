@@ -3,7 +3,7 @@ package com.raven_cze.projt2.client.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix4f;
-import com.raven_cze.projt2.common.config.ClientCFG;
+import com.raven_cze.projt2.common.PT2Config;
 import com.raven_cze.projt2.common.content.PT2Blocks;
 import com.raven_cze.projt2.common.content.blocks.BlockVoidCube;
 import com.raven_cze.projt2.common.content.tiles.TileVoidCube;
@@ -55,7 +55,7 @@ public class VoidCubeRenderer implements BlockEntityRenderer<TileVoidCube>{//TOD
         Matrix4f matrix = stack.last().pose();
         //  This does render that interdimensional "galaxy"
         this.renderCube(tvc, matrix, buffer.getBuffer(PT2RenderTypes.VOID_CUBE));
-        if(ClientCFG.lowFX.get())this.renderCube(tvc, matrix, buffer.getBuffer(PT2RenderTypes.VOID_CUBE_32));// Lower res
+        if(PT2Config.CLIENT.lowFX.get())this.renderCube(tvc, matrix, buffer.getBuffer(PT2RenderTypes.VOID_CUBE_32));// Lower res
         stack.popPose();
         stack.scale(1.0F,1.0F,1.0F);
     }

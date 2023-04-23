@@ -25,7 +25,6 @@ public class BlockVoidLock extends Block implements EntityBlock{
 
 	public BlockVoidLock(Properties properties){
 		super(properties);
-		properties.strength(10.0F);
 
 		registerDefaultState(getStateDefinition().any()
 				.setValue(NORTH_RUNE,0)
